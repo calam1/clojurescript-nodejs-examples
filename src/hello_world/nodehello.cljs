@@ -1,20 +1,16 @@
 (ns hello-world.nodehello
 (:require [cljs.nodejs :as node]))
 
-(def restify (node/require "restify"))
+(def express (node/require "express"))
 
-(defn respond [request response next]
-  (let [name (aget request "params" "name")]
-  (.send response (apply str "hello " name))))
-
-(def server (.createServer restify))
-
-(do
-  (.get server "/hello/:name" respond)
-  (.head server "/hello/:name" respond))
+(def app (express))
 
 (defn -main [& args]
-  (.listen server 8080 (println " localhost listening port 8080" )))
+  (. app (get "/hello/:name" (fn [req res]
+                    (let [name (aget req "params" "name")]
+                    (. res (send (apply str "express server hello world " name)))))))
+  (.log js/console (str "Express server started on port: " (.-port (.address (.listen app 8080))))))
 
 (enable-console-print!)
+
 (set! *main-cli-fn* -main)

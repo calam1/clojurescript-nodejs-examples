@@ -1,8 +1,18 @@
 clojurescript-nodejs-examples
 =============================
 
-A collection of clojurescript examples running on nodejs.  
+This example is a simple clojurescript web app running on nodejs using express.
 
-Examples will be categorized by branch names.  The master branch will have the first example and nothing will be merged to that branch.  It is just the initial commit.
+i.e. http://localhost:8080/hello/test - prints hello test on the browser.
 
+Notes:
+
+You must have nodejs installed - if you are on a mac just brew install node
+You also must have express installed.  Once you have node installed run npm express - npm is installed when you install nodejs
+
+once you compiled this project with the following command - I am using leinengen to manage my projects
+
+lein cljsbuild once
+
+run node nodehello.js (in the directory that nodehello.js resides which should be in the src directory.
 
