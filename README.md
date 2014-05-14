@@ -1,7 +1,7 @@
 clojurescript-nodejs-examples
 =============================
 
-A collection of clojurescript examples running on nodejs. 
+credit: http://dannysu.com/2013/04/14/cljs-restify-node/
 
 This example is a simple clojurescript web app running on nodejs using restify.  
 
