@@ -3,7 +3,7 @@ clojurescript-nodejs-examples
 
 A collection of clojurescript examples running on nodejs. 
 
-This example is a simple clojurescript web app running on nodejs.  
+This example is a simple clojurescript web app running on nodejs using restify.  
 
 i.e. http://localhost:8080/hello/test - prints hello test on the browser.
 
@@ -17,3 +17,5 @@ once you compiled this project with the following command - I am using leinengen
 lein cljsbuild once
 
 run node nodehello.js (in the directory that nodehello.js resides which should be in the src directory.
+
+
