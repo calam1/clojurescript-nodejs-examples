@@ -2,29 +2,27 @@
 (:require [cljs.nodejs :as node]
           [cljs.core :as cljs]))
 
-(def times-greeted (atom {}))
+(def express (js/require "express"))
+(def app (express))
+(def fs (js/require "fs"))
+(def *rs* nil)
 
-(defn say-hello [request response next]
-  (let [name (aget request "params" "name")
-        old-count (@times-greeted name)
-        new-count (inc (if (nil? old-count) 0 old-count))
-        response-body (cljs/clj->js {:name name :visit_count new-count})]
-    (do
-      (swap! times-greeted assoc name new-count)
-      (.send response response-body)
-      (next))))
+(.get app "/" (fn [req res]
+                (.send res "Hello world!")))
 
-(defn create-server []
-  (let [restify (node/require "restify")
-        server (.createServer restify)
-        ]
-    (do
-      (.get server "/greeting/:name" say-hello))
-    server))
+(.get app "/user/:name" (fn [req res]
+                          (.send res (aget req "params" "name"))))
 
-(defn -main [& args]
-  (let [web-server (create-server)]
-    (.listen web-server 3000)) (println "localhost listening to port 3000 - localhost/greetings/:name"))
+
+(.get app "/read"
+      (fn [req res]
+        (set! *rs* (.createReadStream fs "/Users/clam/test.txt"))
+        (.pipe *rs* res)))
+
+(.listen app 3000)
+
+(defn -main[& _]
+  (println "Server started on port 3000"))
 
 (enable-console-print!)
 

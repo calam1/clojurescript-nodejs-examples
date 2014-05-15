@@ -3,7 +3,10 @@ clojurescript-nodejs-examples
 
 This example is a simple clojurescript web app running on nodejs using express.
 
-i.e. http://localhost:3000/greeting/test  - prints hello test on the browser.
+i.e.
+- http://localhost:3000/  - prints hello test on the browser.
+- http://localhost:3000/user/test - prints whatever is appended after the user element
+- http://localhost:3000/read - reads a file that I hardcoded the location of the file in the code
 
 Notes:
 
@@ -16,3 +19,5 @@ lein cljsbuild once
 
 run node nodehello.js (in the directory that nodehello.js resides which should be in the src directory.
 
+credit:
+http://andreio.net/clojurescript_with_node_modules_10_Dec_2013.html
