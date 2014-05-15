@@ -3,7 +3,7 @@ clojurescript-nodejs-examples
 
 This example is a simple clojurescript web app running on nodejs using express.
 
-i.e. http://localhost:8080/hello/test - prints hello test on the browser.
+i.e. http://localhost:3000/greeting/test  - prints hello test on the browser.
 
 Notes:
 
