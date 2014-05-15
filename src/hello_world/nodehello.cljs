@@ -17,12 +17,9 @@
 (defn create-server []
   (let [restify (node/require "restify")
         server (.createServer restify)
-        static-file-regexp (js/RegExp. "^/\\?.*")
-        static-server-opts (cljs/clj->js {:directory "./resources" :default "index.html"})
-        static-file-server (.serveStatic restify static-server-opts)]
+        ]
     (do
-      (.get server "/greeting/:name" say-hello)
-      (.get server static-file-regexp static-file-server))
+      (.get server "/greeting/:name" say-hello))
     server))
 
 (defn -main [& args]
