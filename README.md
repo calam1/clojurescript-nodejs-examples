@@ -1,7 +1,9 @@
 clojurescript-nodejs-examples
 =============================
 
-This example is a simple clojurescript web app running on nodejs using express.
+This example is a simple clojurescript web app running on nodejs using express interacting with AWS DynamoDB.
+
+I hope this will help somebody looking for a simple example to interact with AWS (Amazon Web Services).  Although this example is DynamoDB specific, the setup of the aws-sdk and its usage should carry across most if not all AWS services.  I searched high and low for an example of Clojurescript interecting with AWS and found nothing.  Not that it is difficult to interact with the aws-sdk package, just that my level of Clojurescript coding is at beginner level so a lot of things are new and a struggle.
 
 i.e.
 - http://localhost:8080/tables  - prints all your dynamodb tables to the browser.
@@ -9,7 +11,7 @@ i.e.
 Notes:
 Amazon account required, and obviously the existence of dynamodb tables.  Your credentials should be exported in your classpath.
 You must have nodejs installed - if you are on a mac just brew install node
-You also must have express installed.  Once you have node installed run npm express - npm is installed when you install nodejs
+You also must have express installed.  Once you have node installed run npm express and aws-sdk - npm is installed when you install nodejs
 
 once you compiled this project with the following command - I am using leinengen to manage my projects
 
