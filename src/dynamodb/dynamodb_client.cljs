@@ -5,10 +5,10 @@
 (def express (node/require "express"))
 (def app (express))
 (def aws (node/require "aws-sdk"))
+(def product-table {:TableName  "commerce.business.promote.PRODUCT"})
 
 (defn handle-it [err data]
-  (println "in the handler " data "error value " err)
-  )
+  (println "in the handler " data "error value " err))
 
 ;;this function just uses a callback to print and we can't send a response back or at least I don't know how to :)
 ;(defn tables [req res]
@@ -18,18 +18,31 @@
 ;      (.listTables db handle-it))))
 
 ;;this function is similar to the one above except we do not specify a callback for AWS we manually send
-;;need to handle failure, etc - look at amazon documentation for aws-sdk for nodejs
 (defn tables [req res]
   (let [config (.-config aws)]
     (set! (.-region config) "us-east-1")
     (let [db (aws.DynamoDB.)]
       (let [request (.listTables db)]
-        (.on request "success" (fn [response] (.send res "response " (.-data response))))
+        (.on request "complete" (fn [response]
+                                  (if (.-error response)(.send res "error " (.-error response))
+                                      (.send res "response " (.-data response)))))
+        (.send request)))))
+
+;;describe product table
+(defn describeProductTable [req res]
+  (let [config (.-config aws)]
+    (set! (.-region config) "us-east-1")
+    (let [db (aws.DynamoDB.)]
+      (let [request (.describeTable db (clj->js product-table))];;clj->js converts map to json
+        (.on request "complete" (fn [response]
+                                  (if (.-error response)(.send res "error " (.-error response))
+                                     (.send res "response " (.-data response)))))
       (.send request)))))
 
 
 (.get app "/tables" tables)
-(.get app "/search/productId/:productId" productSearch)
+(.get app "/describeProductTable" describeProductTable)
+;(.get app "/search/sku/:sku" productSkuSearch)
 
 (.listen app 8080)
 

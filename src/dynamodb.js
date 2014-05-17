@@ -14004,19 +14004,28 @@ var dynamodb = {dynamodb_client:{}};
 dynamodb.dynamodb_client.express = cljs.nodejs.require.call(null, "express");
 dynamodb.dynamodb_client.app = dynamodb.dynamodb_client.express.call(null);
 dynamodb.dynamodb_client.aws = cljs.nodejs.require.call(null, "aws-sdk");
+dynamodb.dynamodb_client.product_table = new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "TableName", "TableName", 1029154507), "commerce.business.promote.PRODUCT"], null);
 dynamodb.dynamodb_client.handle_it = function(a, b) {
   return cljs.core.println.call(null, "in the handler ", b, "error value ", a);
 };
 dynamodb.dynamodb_client.tables = function(a, b) {
   dynamodb.dynamodb_client.aws.config.region = "us-east-1";
   var c = (new dynamodb.dynamodb_client.aws.DynamoDB).listTables();
-  c.on("success", function(a) {
-    return b.send("response ", a.data);
+  c.on("complete", function(a) {
+    return cljs.core.truth_(a.error) ? b.send("error ", a.error) : b.send("response ", a.data);
+  });
+  return c.send();
+};
+dynamodb.dynamodb_client.describeProductTable = function(a, b) {
+  dynamodb.dynamodb_client.aws.config.region = "us-east-1";
+  var c = (new dynamodb.dynamodb_client.aws.DynamoDB).describeTable(cljs.core.clj__GT_js.call(null, dynamodb.dynamodb_client.product_table));
+  c.on("complete", function(a) {
+    return cljs.core.truth_(a.error) ? b.send("error ", a.error) : b.send("response ", a.data);
   });
   return c.send();
 };
 dynamodb.dynamodb_client.app.get("/tables", dynamodb.dynamodb_client.tables);
-dynamodb.dynamodb_client.app.get("/search/productId/:productId", dynamodb.dynamodb_client.productSearch);
+dynamodb.dynamodb_client.app.get("/describeProductTable", dynamodb.dynamodb_client.describeProductTable);
 dynamodb.dynamodb_client.app.listen(8080);
 dynamodb.dynamodb_client._main = function() {
   var a = function(a) {
