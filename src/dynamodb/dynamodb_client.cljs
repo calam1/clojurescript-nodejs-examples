@@ -6,6 +6,16 @@
 (def app (express))
 (def aws (node/require "aws-sdk"))
 (def product-table {:TableName  "commerce.business.promote.PRODUCT"})
+(def product-sku-search {:TableName  "commerce.business.promote.PRODUCT"
+                           :KeyConditions {
+                               :id {:ComparisonOperator "EQ",
+                               :AttributeValueList [{:S "78CE7EB3D8AD4468940EE679D7D37307::BG-BRAND-4-2-3"}]
+                               },
+                               :sku {:ComparisonOperator "EQ",
+                               :AttributeValueList [{:S "SKU_KEY"}]
+                               }
+                             }
+                        })
 
 (defn handle-it [err data]
   (println "in the handler " data "error value " err))
@@ -39,10 +49,23 @@
                                      (.send res "response " (.-data response)))))
       (.send request)))))
 
+;;product sku search
+(defn productSkuSearch [req res]
+  (let [config (.-config aws)]
+    (set! (.-region config) "us-east-1")
+    (let [db (aws.DynamoDB.)]
+      (let [sku (aget req "params" "sku")]
+        (let [new-product-sku-search (assoc-in product-sku-search[:KeyConditions :sku :AttributeValueList 0 :S]  sku)]
+          (let [request (.query db (clj->js new-product-sku-search))]
+            (.on request "complete" (fn [response]
+                                      (if (.-error response)(.send res "error " (.-error response))
+                                        (.send res "response " (.-data response)))))
+            (.send request)))))))
+
 
 (.get app "/tables" tables)
 (.get app "/describeProductTable" describeProductTable)
-;(.get app "/search/sku/:sku" productSkuSearch)
+(.get app "/search/sku/:sku" productSkuSearch)
 
 (.listen app 8080)
 

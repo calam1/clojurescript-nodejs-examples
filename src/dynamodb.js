@@ -14005,6 +14005,9 @@ dynamodb.dynamodb_client.express = cljs.nodejs.require.call(null, "express");
 dynamodb.dynamodb_client.app = dynamodb.dynamodb_client.express.call(null);
 dynamodb.dynamodb_client.aws = cljs.nodejs.require.call(null, "aws-sdk");
 dynamodb.dynamodb_client.product_table = new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "TableName", "TableName", 1029154507), "commerce.business.promote.PRODUCT"], null);
+dynamodb.dynamodb_client.product_sku_search = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "TableName", "TableName", 1029154507), "commerce.business.promote.PRODUCT", new cljs.core.Keyword(null, "KeyConditions", "KeyConditions", 3310791113), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "id", "id", 1013907597), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ComparisonOperator", "ComparisonOperator", 1620971359), "EQ", new cljs.core.Keyword(null, 
+"AttributeValueList", "AttributeValueList", 2230708741), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "S", "S", 1013904325), "78CE7EB3D8AD4468940EE679D7D37307::BG-BRAND-4-2-3"], null)], null)], null), new cljs.core.Keyword(null, "sku", "sku", 1014018191), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ComparisonOperator", "ComparisonOperator", 1620971359), "EQ", new cljs.core.Keyword(null, 
+"AttributeValueList", "AttributeValueList", 2230708741), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "S", "S", 1013904325), "SKU_KEY"], null)], null)], null)], null)], null);
 dynamodb.dynamodb_client.handle_it = function(a, b) {
   return cljs.core.println.call(null, "in the handler ", b, "error value ", a);
 };
@@ -14024,8 +14027,18 @@ dynamodb.dynamodb_client.describeProductTable = function(a, b) {
   });
   return c.send();
 };
+dynamodb.dynamodb_client.productSkuSearch = function(a, b) {
+  dynamodb.dynamodb_client.aws.config.region = "us-east-1";
+  var c = new dynamodb.dynamodb_client.aws.DynamoDB, d = a.params.sku, d = cljs.core.assoc_in.call(null, dynamodb.dynamodb_client.product_sku_search, new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "KeyConditions", "KeyConditions", 3310791113), new cljs.core.Keyword(null, "sku", "sku", 1014018191), new cljs.core.Keyword(null, "AttributeValueList", "AttributeValueList", 2230708741), 0, new cljs.core.Keyword(null, "S", "S", 1013904325)], 
+  null), d), c = c.query(cljs.core.clj__GT_js.call(null, d));
+  c.on("complete", function(a) {
+    return cljs.core.truth_(a.error) ? b.send("error ", a.error) : b.send("response ", a.data);
+  });
+  return c.send();
+};
 dynamodb.dynamodb_client.app.get("/tables", dynamodb.dynamodb_client.tables);
 dynamodb.dynamodb_client.app.get("/describeProductTable", dynamodb.dynamodb_client.describeProductTable);
+dynamodb.dynamodb_client.app.get("/search/sku/:sku", dynamodb.dynamodb_client.productSkuSearch);
 dynamodb.dynamodb_client.app.listen(8080);
 dynamodb.dynamodb_client._main = function() {
   var a = function(a) {
