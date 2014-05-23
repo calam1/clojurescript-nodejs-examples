@@ -17,6 +17,15 @@
                              }
                         })
 
+(def product-all {:TableName  "commerce.business.promote.PRODUCT"
+                           :KeyConditions {
+                               :id {:ComparisonOperator "EQ",
+                               :AttributeValueList [{:S "78CE7EB3D8AD4468940EE679D7D37307::BG-BRAND-4-2-3"}]
+                               }
+                             }
+                        })
+
+
 (defn handle-it [err data]
   (println "in the handler " data "error value " err))
 
@@ -62,10 +71,42 @@
                                         (.send res "response " (.-data response)))))
             (.send request)))))))
 
+;;all products search print on web browser
+(defn productAll [req res]
+  (let [config (.-config aws)]
+    (set! (.-region config) "us-east-1")
+    (let [db (aws.DynamoDB.)]
+          (let [request (.query db (clj->js product-all))]
+            (.on request "complete" (fn [response]
+                                      (if (.-error response)(.send res "error " (.-error response))
+                                        (.send res "response " (.-data response)))))
+            (.send request)))))
+
+
+;;start of handler to write to red black tree
+(defn handleProducts [err data]
+  (let [test (-> data .-Items)
+        lim (alength test)]
+    (loop [i 0]
+      (if (< i lim)
+        (println "chris " (.-sku (aget test i))))
+       (recur (inc i)))))
+
+
+;;all products search use handler
+(defn productAll2 [req res]
+  (let [config (.-config aws)]
+    (set! (.-region config) "us-east-1")
+    (let [db (aws.DynamoDB.)]
+          (.query db (clj->js product-all) handleProducts)))
+  (.send res "populating RB Tree with deals"))
+
 
 (.get app "/tables" tables)
 (.get app "/describeProductTable" describeProductTable)
 (.get app "/search/sku/:sku" productSkuSearch)
+(.get app "/search/allProducts" productAll)
+(.get app "/search/allProducts2" productAll2)
 
 (.listen app 8080)
 

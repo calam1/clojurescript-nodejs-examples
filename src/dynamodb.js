@@ -14008,6 +14008,8 @@ dynamodb.dynamodb_client.product_table = new cljs.core.PersistentArrayMap(null, 
 dynamodb.dynamodb_client.product_sku_search = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "TableName", "TableName", 1029154507), "commerce.business.promote.PRODUCT", new cljs.core.Keyword(null, "KeyConditions", "KeyConditions", 3310791113), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "id", "id", 1013907597), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ComparisonOperator", "ComparisonOperator", 1620971359), "EQ", new cljs.core.Keyword(null, 
 "AttributeValueList", "AttributeValueList", 2230708741), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "S", "S", 1013904325), "78CE7EB3D8AD4468940EE679D7D37307::BG-BRAND-4-2-3"], null)], null)], null), new cljs.core.Keyword(null, "sku", "sku", 1014018191), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ComparisonOperator", "ComparisonOperator", 1620971359), "EQ", new cljs.core.Keyword(null, 
 "AttributeValueList", "AttributeValueList", 2230708741), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "S", "S", 1013904325), "SKU_KEY"], null)], null)], null)], null)], null);
+dynamodb.dynamodb_client.product_all = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "TableName", "TableName", 1029154507), "commerce.business.promote.PRODUCT", new cljs.core.Keyword(null, "KeyConditions", "KeyConditions", 3310791113), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "id", "id", 1013907597), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ComparisonOperator", "ComparisonOperator", 1620971359), "EQ", new cljs.core.Keyword(null, 
+"AttributeValueList", "AttributeValueList", 2230708741), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "S", "S", 1013904325), "78CE7EB3D8AD4468940EE679D7D37307::BG-BRAND-4-2-3"], null)], null)], null)], null)], null);
 dynamodb.dynamodb_client.handle_it = function(a, b) {
   return cljs.core.println.call(null, "in the handler ", b, "error value ", a);
 };
@@ -14036,9 +14038,29 @@ dynamodb.dynamodb_client.productSkuSearch = function(a, b) {
   });
   return c.send();
 };
+dynamodb.dynamodb_client.productAll = function(a, b) {
+  dynamodb.dynamodb_client.aws.config.region = "us-east-1";
+  var c = (new dynamodb.dynamodb_client.aws.DynamoDB).query(cljs.core.clj__GT_js.call(null, dynamodb.dynamodb_client.product_all));
+  c.on("complete", function(a) {
+    return cljs.core.truth_(a.error) ? b.send("error ", a.error) : b.send("response ", a.data);
+  });
+  return c.send();
+};
+dynamodb.dynamodb_client.handleProducts = function(a, b) {
+  for (var c = b.Items, d = c.length, e = 0;;) {
+    e < d && cljs.core.println.call(null, "chris ", c[e].sku), e += 1;
+  }
+};
+dynamodb.dynamodb_client.productAll2 = function(a, b) {
+  dynamodb.dynamodb_client.aws.config.region = "us-east-1";
+  (new dynamodb.dynamodb_client.aws.DynamoDB).query(cljs.core.clj__GT_js.call(null, dynamodb.dynamodb_client.product_all), dynamodb.dynamodb_client.handleProducts);
+  return b.send("populating RB Tree with deals");
+};
 dynamodb.dynamodb_client.app.get("/tables", dynamodb.dynamodb_client.tables);
 dynamodb.dynamodb_client.app.get("/describeProductTable", dynamodb.dynamodb_client.describeProductTable);
 dynamodb.dynamodb_client.app.get("/search/sku/:sku", dynamodb.dynamodb_client.productSkuSearch);
+dynamodb.dynamodb_client.app.get("/search/allProducts", dynamodb.dynamodb_client.productAll);
+dynamodb.dynamodb_client.app.get("/search/allProducts2", dynamodb.dynamodb_client.productAll2);
 dynamodb.dynamodb_client.app.listen(8080);
 dynamodb.dynamodb_client._main = function() {
   var a = function(a) {
