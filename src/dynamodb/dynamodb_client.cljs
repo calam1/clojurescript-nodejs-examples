@@ -25,6 +25,15 @@
                              }
                         })
 
+(def deals-all {:TableName  "commerce.business.promote.DEAL"
+                           :KeyConditions {
+                               :id {:ComparisonOperator "EQ",
+                               :AttributeValueList [{:S "78CE7EB3D8AD4468940EE679D7D37307"}]
+                               }
+                             }
+                        })
+
+(def products (atom {}))
 
 (defn handle-it [err data]
   (println "in the handler " data "error value " err))
@@ -82,31 +91,60 @@
                                         (.send res "response " (.-data response)))))
             (.send request)))))
 
-
-;;start of handler to write to red black tree
-(defn handleProducts [err data]
+;;handler for products using loop and recur print in logs
+(defn handleProductsLoop [err data]
   (let [test (-> data .-Items)
         lim (alength test)]
     (loop [i 0]
       (if (< i lim)
-        (println "chris " (.-sku (aget test i))))
+        (println "counter " i " " (.-S (.-sku (aget test i)))))
        (recur (inc i)))))
 
+;;handler for products using seq and adding to map - incomplete - experimental
+(defn handleProductsMap [err data]
+  (let [test (-> data .-Items)
+       testMap (map #(hash-map % "testValue")(seq (js->clj test)))]
+    ))
 
-;;all products search use handler
+;;handler for deals using loop and recur
+(defn handleDealsLoop [err data]
+  (let [test (-> data .-Items)
+        lim (alength test)]
+    (loop [i 0]
+      (if (< i lim)
+        (let [test2 (aget test i)]
+          (let [test3  (.-S (aget test2 "deal-type"))]
+            (println i " test " test3))
+       (recur (inc i)))))))
+
+;;handler for deals using seq and filter - next step is adding to map
+(defn handleDeals [err data]
+  (let [test (-> data .-Items)
+        test2 (seq (js->clj test))
+        test3 (filter (fn [x] (= "\"BOGO\"" (get (get x "deal-type") "S"))) test2)]
+    (println test3)
+    (println  (count test3))))
+
 (defn productAll2 [req res]
   (let [config (.-config aws)]
     (set! (.-region config) "us-east-1")
     (let [db (aws.DynamoDB.)]
-          (.query db (clj->js product-all) handleProducts)))
-  (.send res "populating RB Tree with deals"))
+          (.query db (clj->js product-all) handleProductsMap)))
+  (.send res "populating products"))
 
+(defn dealsAll [req res]
+  (let [config (.-config aws)]
+    (set! (.-region config) "us-east-1")
+    (let [db (aws.DynamoDB.)]
+          (.query db (clj->js deals-all) handleDeals)))
+  (.send res "populating with deals"))
 
 (.get app "/tables" tables)
 (.get app "/describeProductTable" describeProductTable)
 (.get app "/search/sku/:sku" productSkuSearch)
 (.get app "/search/allProducts" productAll)
 (.get app "/search/allProducts2" productAll2)
+(.get app "/search/allDeals" dealsAll)
 
 (.listen app 8080)
 
