@@ -33,7 +33,7 @@
                              }
                         })
 
-(def products (atom {}))
+(def deals (atom {}))
 
 (defn handle-it [err data]
   (println "in the handler " data "error value " err))
@@ -117,12 +117,27 @@
             (println i " test " test3))
        (recur (inc i)))))))
 
-;;handler for deals using seq and filter - next step is adding to map
+;;handler for deals using seq and filter all BOGO deal types - next step is adding to map
 (defn handleDeals [err data]
   (let [test (-> data .-Items)
         test2 (seq (js->clj test))
-        test3 (filter (fn [x] (= "\"BOGO\"" (get (get x "deal-type") "S"))) test2)]
-    (println test3)
+        test3 (filter (fn [x] (= "\"BOGO\"" (get (get x "deal-type") "S"))) test2)
+        test4 (get (first test3) "components");;need to loop recur
+        test5 (get test4 "S")
+        test6 (js/JSON.parse test5);;have to do this because qualifiers are stored as a string in the components column
+        test7 (first test6);;need loop recur
+        test8 (aget test7 "qualifiers")
+        test9 (second test8);;need loop recur
+        testa (aget test9 "qualifierDef")
+        testb (aget testa "javaType")
+        testc (aget testa "jsonContent")
+        testd (js/JSON.parse testc);;skus were stored as string, as it is labeled json content
+        teste (aget testd "skus")
+        testf (first teste);;need loop recur
+        ]
+    (println testf)
+    ;deals (map #(hash-map % "testValue") test3)]
+    ;(println deals)
     (println  (count test3))))
 
 (defn productAll2 [req res]

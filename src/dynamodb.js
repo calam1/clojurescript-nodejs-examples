@@ -14012,7 +14012,7 @@ dynamodb.dynamodb_client.product_all = new cljs.core.PersistentArrayMap(null, 2,
 "AttributeValueList", "AttributeValueList", 2230708741), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "S", "S", 1013904325), "78CE7EB3D8AD4468940EE679D7D37307::BG-BRAND-4-2-3"], null)], null)], null)], null)], null);
 dynamodb.dynamodb_client.deals_all = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "TableName", "TableName", 1029154507), "commerce.business.promote.DEAL", new cljs.core.Keyword(null, "KeyConditions", "KeyConditions", 3310791113), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "id", "id", 1013907597), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ComparisonOperator", "ComparisonOperator", 1620971359), "EQ", new cljs.core.Keyword(null, 
 "AttributeValueList", "AttributeValueList", 2230708741), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "S", "S", 1013904325), "78CE7EB3D8AD4468940EE679D7D37307"], null)], null)], null)], null)], null);
-dynamodb.dynamodb_client.products = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.EMPTY);
+dynamodb.dynamodb_client.deals = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.EMPTY);
 dynamodb.dynamodb_client.handle_it = function(a, b) {
   return cljs.core.println.call(null, "in the handler ", b, "error value ", a);
 };
@@ -14077,8 +14077,8 @@ dynamodb.dynamodb_client.handleDeals = function(a, b) {
     return function(a) {
       return cljs.core._EQ_.call(null, '"BOGO"', cljs.core.get.call(null, cljs.core.get.call(null, a, "deal-type"), "S"));
     };
-  }(c, d), d);
-  cljs.core.println.call(null, c);
+  }(c, d), d), d = cljs.core.get.call(null, cljs.core.first.call(null, c), "components"), d = cljs.core.get.call(null, d, "S"), d = JSON.parse(d), d = cljs.core.first.call(null, d).qualifiers, d = cljs.core.second.call(null, d).qualifierDef.jsonContent, d = JSON.parse(d).skus, d = cljs.core.first.call(null, d);
+  cljs.core.println.call(null, d);
   return cljs.core.println.call(null, cljs.core.count.call(null, c));
 };
 dynamodb.dynamodb_client.productAll2 = function(a, b) {
