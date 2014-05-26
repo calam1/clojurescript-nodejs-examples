@@ -118,27 +118,77 @@
        (recur (inc i)))))))
 
 ;;handler for deals using seq and filter all BOGO deal types - next step is adding to map
+;(defn handleDeals [err data]
+;  (let [test (-> data .-Items)
+;        test2 (seq (js->clj test))
+;        test3 (filter (fn [x] (= "\"BOGO\"" (get (get x "deal-type") "S"))) test2)
+;        test4 (get (first test3) "components");;need to loop recur
+;        test5 (get test4 "S")
+;        test6 (js/JSON.parse test5);;have to do this because qualifiers are stored as a string in the components column
+;        test7 (first test6);;need loop recur
+;        test8 (aget test7 "qualifiers")
+;        test9 (second test8);;need loop recur
+;        testa (aget test9 "qualifierDef")
+;        testb (aget testa "javaType")
+;        testc (aget testa "jsonContent")
+;        testd (js/JSON.parse testc);;skus were stored as string, as it is labeled json content
+;        teste (aget testd "skus")
+;        testf (first teste);;need loop recur - prints sku
+;        ]
+;    (println testf)
+;    ;deals (map #(hash-map % "testValue") test3)]
+;    ;(println deals)
+;    (println  (count test3))))
+
+
+
+;;BEGINNING OF DEALS PROCESSING
+(defn handleQualifiers [components]
+   (loop [myComponents components]
+                  (if (not-empty myComponents)
+                    (let [qualifiers (aget (first myComponents) "qualifiers")]
+                      ;(println " QUALIFIERS " qualifiers "\n")
+                      (loop [myQualifiers qualifiers]
+                        (if (seq myQualifiers)
+                          (let [qualifier (first myQualifiers)]
+                            (println " QUALIFIER " qualifier "\n")
+                            (println " QUALIFIER_DEF.JAVA_TYPE " (.. qualifier -qualifierDef -javaType) "\n")
+
+                        (recur (rest myQualifiers)))))
+                  (recur (rest myComponents))))))
+
+(defn handleComponents [deals]
+    (loop [myDeals deals]
+          (if (seq myDeals)
+            (let [deal (first myDeals)]
+              (println " DEAL " deal "\n")
+              ;(println " COMPONENTS " (js/JSON.parse (get (get deal "components") "S")))))
+              (let [components (js/JSON.parse (get (get deal "components") "S"))]
+                (println " COMPONENTS " components "\n")
+                (handleQualifiers components);; WE ARE GOING TO NEED TO INLINE THIS OR PASS THE DEAL SO THAT WE CAN PUT IT IN THE MAP
+                )
+
+              (println "END OF INDIVIDUAL COMPONENTS PROCESSING!!!! \n")
+          (recur (rest myDeals)))));all parens must enclose recur or you might get weird behaviours like inifinite looping
+          (println "END OF COMPONENTS AND DEALS PROCESSING!!!! \n"))
+
+
 (defn handleDeals [err data]
   (let [test (-> data .-Items)
         test2 (seq (js->clj test))
-        test3 (filter (fn [x] (= "\"BOGO\"" (get (get x "deal-type") "S"))) test2)
-        test4 (get (first test3) "components");;need to loop recur
-        test5 (get test4 "S")
-        test6 (js/JSON.parse test5);;have to do this because qualifiers are stored as a string in the components column
-        test7 (first test6);;need loop recur
-        test8 (aget test7 "qualifiers")
-        test9 (second test8);;need loop recur
-        testa (aget test9 "qualifierDef")
-        testb (aget testa "javaType")
-        testc (aget testa "jsonContent")
-        testd (js/JSON.parse testc);;skus were stored as string, as it is labeled json content
-        teste (aget testd "skus")
-        testf (first teste);;need loop recur
-        ]
-    (println testf)
-    ;deals (map #(hash-map % "testValue") test3)]
-    ;(println deals)
-    (println  (count test3))))
+        bogoDeals (filter (fn [x] (= "\"BOGO\"" (get (get x "deal-type") "S"))) test2)
+        limBogoDeals (count bogoDeals)]
+        (println "count " limBogoDeals)
+        (handleComponents bogoDeals)))
+
+(defn dealsAll [req res]
+  (let [config (.-config aws)]
+    (set! (.-region config) "us-east-1")
+    (let [db (aws.DynamoDB.)]
+          (.query db (clj->js deals-all) handleDeals)))
+  (.send res "populating with deals"))
+
+;;END OF DEALS PROCESSING
 
 (defn productAll2 [req res]
   (let [config (.-config aws)]
@@ -147,12 +197,6 @@
           (.query db (clj->js product-all) handleProductsMap)))
   (.send res "populating products"))
 
-(defn dealsAll [req res]
-  (let [config (.-config aws)]
-    (set! (.-region config) "us-east-1")
-    (let [db (aws.DynamoDB.)]
-          (.query db (clj->js deals-all) handleDeals)))
-  (.send res "populating with deals"))
 
 (.get app "/tables" tables)
 (.get app "/describeProductTable" describeProductTable)

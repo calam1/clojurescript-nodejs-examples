@@ -14072,24 +14072,59 @@ dynamodb.dynamodb_client.handleDealsLoop = function(a, b) {
     }
   }
 };
+dynamodb.dynamodb_client.handleQualifiers = function(a) {
+  for (;;) {
+    if (cljs.core.truth_(cljs.core.not_empty.call(null, a))) {
+      for (var b = cljs.core.first.call(null, a).qualifiers;;) {
+        if (cljs.core.seq.call(null, b)) {
+          var c = cljs.core.first.call(null, b);
+          cljs.core.println.call(null, " QUALIFIER ", c, "\n");
+          cljs.core.println.call(null, " QUALIFIER_DEF.JAVA_TYPE ", c.qualifierDef.javaType, "\n");
+          b = cljs.core.rest.call(null, b);
+        } else {
+          break;
+        }
+      }
+      a = cljs.core.rest.call(null, a);
+    } else {
+      return null;
+    }
+  }
+};
+dynamodb.dynamodb_client.handleComponents = function(a) {
+  for (;;) {
+    if (cljs.core.seq.call(null, a)) {
+      var b = cljs.core.first.call(null, a);
+      cljs.core.println.call(null, " DEAL ", b, "\n");
+      b = JSON.parse(cljs.core.get.call(null, cljs.core.get.call(null, b, "components"), "S"));
+      cljs.core.println.call(null, " COMPONENTS ", b, "\n");
+      dynamodb.dynamodb_client.handleQualifiers.call(null, b);
+      cljs.core.println.call(null, "END OF INDIVIDUAL COMPONENTS PROCESSING!!!! \n");
+      a = cljs.core.rest.call(null, a);
+    } else {
+      break;
+    }
+  }
+  return cljs.core.println.call(null, "END OF COMPONENTS AND DEALS PROCESSING!!!! \n");
+};
 dynamodb.dynamodb_client.handleDeals = function(a, b) {
   var c = b.Items, d = cljs.core.seq.call(null, cljs.core.js__GT_clj.call(null, c)), c = cljs.core.filter.call(null, function(a, b) {
     return function(a) {
       return cljs.core._EQ_.call(null, '"BOGO"', cljs.core.get.call(null, cljs.core.get.call(null, a, "deal-type"), "S"));
     };
-  }(c, d), d), d = cljs.core.get.call(null, cljs.core.first.call(null, c), "components"), d = cljs.core.get.call(null, d, "S"), d = JSON.parse(d), d = cljs.core.first.call(null, d).qualifiers, d = cljs.core.second.call(null, d).qualifierDef.jsonContent, d = JSON.parse(d).skus, d = cljs.core.first.call(null, d);
-  cljs.core.println.call(null, d);
-  return cljs.core.println.call(null, cljs.core.count.call(null, c));
-};
-dynamodb.dynamodb_client.productAll2 = function(a, b) {
-  dynamodb.dynamodb_client.aws.config.region = "us-east-1";
-  (new dynamodb.dynamodb_client.aws.DynamoDB).query(cljs.core.clj__GT_js.call(null, dynamodb.dynamodb_client.product_all), dynamodb.dynamodb_client.handleProductsMap);
-  return b.send("populating products");
+  }(c, d), d), d = cljs.core.count.call(null, c);
+  cljs.core.println.call(null, "count ", d);
+  return dynamodb.dynamodb_client.handleComponents.call(null, c);
 };
 dynamodb.dynamodb_client.dealsAll = function(a, b) {
   dynamodb.dynamodb_client.aws.config.region = "us-east-1";
   (new dynamodb.dynamodb_client.aws.DynamoDB).query(cljs.core.clj__GT_js.call(null, dynamodb.dynamodb_client.deals_all), dynamodb.dynamodb_client.handleDeals);
   return b.send("populating with deals");
+};
+dynamodb.dynamodb_client.productAll2 = function(a, b) {
+  dynamodb.dynamodb_client.aws.config.region = "us-east-1";
+  (new dynamodb.dynamodb_client.aws.DynamoDB).query(cljs.core.clj__GT_js.call(null, dynamodb.dynamodb_client.product_all), dynamodb.dynamodb_client.handleProductsMap);
+  return b.send("populating products");
 };
 dynamodb.dynamodb_client.app.get("/tables", dynamodb.dynamodb_client.tables);
 dynamodb.dynamodb_client.app.get("/describeProductTable", dynamodb.dynamodb_client.describeProductTable);
