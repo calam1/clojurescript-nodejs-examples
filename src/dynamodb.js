@@ -14012,7 +14012,7 @@ dynamodb.dynamodb_client.product_all = new cljs.core.PersistentArrayMap(null, 2,
 "AttributeValueList", "AttributeValueList", 2230708741), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "S", "S", 1013904325), "78CE7EB3D8AD4468940EE679D7D37307::BG-BRAND-4-2-3"], null)], null)], null)], null)], null);
 dynamodb.dynamodb_client.deals_all = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "TableName", "TableName", 1029154507), "commerce.business.promote.DEAL", new cljs.core.Keyword(null, "KeyConditions", "KeyConditions", 3310791113), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "id", "id", 1013907597), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ComparisonOperator", "ComparisonOperator", 1620971359), "EQ", new cljs.core.Keyword(null, 
 "AttributeValueList", "AttributeValueList", 2230708741), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "S", "S", 1013904325), "78CE7EB3D8AD4468940EE679D7D37307"], null)], null)], null)], null)], null);
-dynamodb.dynamodb_client.deals = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.EMPTY);
+dynamodb.dynamodb_client.bogoDeals = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.EMPTY);
 dynamodb.dynamodb_client.handle_it = function(a, b) {
   return cljs.core.println.call(null, "in the handler ", b, "error value ", a);
 };
@@ -14078,8 +14078,37 @@ dynamodb.dynamodb_client.handleQualifiers = function(a) {
       for (var b = cljs.core.first.call(null, a).qualifiers;;) {
         if (cljs.core.seq.call(null, b)) {
           var c = cljs.core.first.call(null, b);
-          cljs.core.println.call(null, " QUALIFIER ", c, "\n");
-          cljs.core.println.call(null, " QUALIFIER_DEF.JAVA_TYPE ", c.qualifierDef.javaType, "\n");
+          if (cljs.core._EQ_.call(null, "ProductQualifier", c.qualifierDef.javaType)) {
+            for (var d = JSON.parse(c.qualifierDef.jsonContent), c = d.productCodes, d = cljs.core.seq.call(null, d.skus), e = null, f = 0, g = 0;;) {
+              if (g < f) {
+                var h = cljs.core._nth.call(null, e, g);
+                cljs.core.swap_BANG_.call(null, dynamodb.dynamodb_client.bogoDeals, cljs.core.assoc, h, h);
+                cljs.core.println.call(null, " RUNNING COUNT OF DEALS MAP ", cljs.core.count.call(null, cljs.core.deref.call(null, dynamodb.dynamodb_client.bogoDeals)));
+                g += 1;
+              } else {
+                if (d = cljs.core.seq.call(null, d)) {
+                  e = d, cljs.core.chunked_seq_QMARK_.call(null, e) ? (d = cljs.core.chunk_first.call(null, e), g = cljs.core.chunk_rest.call(null, e), e = d, f = cljs.core.count.call(null, d), d = g) : (d = cljs.core.first.call(null, e), cljs.core.swap_BANG_.call(null, dynamodb.dynamodb_client.bogoDeals, cljs.core.assoc, d, d), cljs.core.println.call(null, " RUNNING COUNT OF DEALS MAP ", cljs.core.count.call(null, cljs.core.deref.call(null, dynamodb.dynamodb_client.bogoDeals))), d = cljs.core.next.call(null, 
+                  e), e = null, f = 0), g = 0;
+                } else {
+                  break;
+                }
+              }
+            }
+            c = cljs.core.seq.call(null, c);
+            d = null;
+            for (f = e = 0;;) {
+              if (f < e) {
+                g = cljs.core._nth.call(null, d, f), cljs.core.swap_BANG_.call(null, dynamodb.dynamodb_client.bogoDeals, cljs.core.assoc, g, g), cljs.core.println.call(null, " RUNNING COUNT OF DEALS MAP ", cljs.core.count.call(null, cljs.core.deref.call(null, dynamodb.dynamodb_client.bogoDeals))), f += 1;
+              } else {
+                if (c = cljs.core.seq.call(null, c)) {
+                  d = c, cljs.core.chunked_seq_QMARK_.call(null, d) ? (c = cljs.core.chunk_first.call(null, d), f = cljs.core.chunk_rest.call(null, d), d = c, e = cljs.core.count.call(null, c), c = f) : (c = cljs.core.first.call(null, d), cljs.core.swap_BANG_.call(null, dynamodb.dynamodb_client.bogoDeals, cljs.core.assoc, c, c), cljs.core.println.call(null, " RUNNING COUNT OF DEALS MAP ", cljs.core.count.call(null, cljs.core.deref.call(null, dynamodb.dynamodb_client.bogoDeals))), c = cljs.core.next.call(null, 
+                  d), d = null, e = 0), f = 0;
+                } else {
+                  break;
+                }
+              }
+            }
+          }
           b = cljs.core.rest.call(null, b);
         } else {
           break;
@@ -14097,7 +14126,6 @@ dynamodb.dynamodb_client.handleComponents = function(a) {
       var b = cljs.core.first.call(null, a);
       cljs.core.println.call(null, " DEAL ", b, "\n");
       b = JSON.parse(cljs.core.get.call(null, cljs.core.get.call(null, b, "components"), "S"));
-      cljs.core.println.call(null, " COMPONENTS ", b, "\n");
       dynamodb.dynamodb_client.handleQualifiers.call(null, b);
       cljs.core.println.call(null, "END OF INDIVIDUAL COMPONENTS PROCESSING!!!! \n");
       a = cljs.core.rest.call(null, a);
@@ -14105,7 +14133,8 @@ dynamodb.dynamodb_client.handleComponents = function(a) {
       break;
     }
   }
-  return cljs.core.println.call(null, "END OF COMPONENTS AND DEALS PROCESSING!!!! \n");
+  cljs.core.println.call(null, "END OF COMPONENTS AND DEALS PROCESSING!!!! \n");
+  return cljs.core.println.call(null, "HOW BIG IS THE BOGODEALS MAP ", cljs.core.count.call(null, cljs.core.deref.call(null, dynamodb.dynamodb_client.bogoDeals)));
 };
 dynamodb.dynamodb_client.handleDeals = function(a, b) {
   var c = b.Items, d = cljs.core.seq.call(null, cljs.core.js__GT_clj.call(null, c)), c = cljs.core.filter.call(null, function(a, b) {

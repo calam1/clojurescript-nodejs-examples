@@ -33,7 +33,7 @@
                              }
                         })
 
-(def deals (atom {}))
+(def bogoDeals (atom {}))
 
 (defn handle-it [err data]
   (println "in the handler " data "error value " err))
@@ -117,45 +117,41 @@
             (println i " test " test3))
        (recur (inc i)))))))
 
-;;handler for deals using seq and filter all BOGO deal types - next step is adding to map
-;(defn handleDeals [err data]
-;  (let [test (-> data .-Items)
-;        test2 (seq (js->clj test))
-;        test3 (filter (fn [x] (= "\"BOGO\"" (get (get x "deal-type") "S"))) test2)
-;        test4 (get (first test3) "components");;need to loop recur
-;        test5 (get test4 "S")
-;        test6 (js/JSON.parse test5);;have to do this because qualifiers are stored as a string in the components column
-;        test7 (first test6);;need loop recur
-;        test8 (aget test7 "qualifiers")
-;        test9 (second test8);;need loop recur
-;        testa (aget test9 "qualifierDef")
-;        testb (aget testa "javaType")
-;        testc (aget testa "jsonContent")
-;        testd (js/JSON.parse testc);;skus were stored as string, as it is labeled json content
-;        teste (aget testd "skus")
-;        testf (first teste);;need loop recur - prints sku
-;        ]
-;    (println testf)
-;    ;deals (map #(hash-map % "testValue") test3)]
-;    ;(println deals)
-;    (println  (count test3))))
-
-
-
 ;;BEGINNING OF DEALS PROCESSING
-(defn handleQualifiers [components]
-   (loop [myComponents components]
-                  (if (not-empty myComponents)
-                    (let [qualifiers (aget (first myComponents) "qualifiers")]
-                      ;(println " QUALIFIERS " qualifiers "\n")
-                      (loop [myQualifiers qualifiers]
-                        (if (seq myQualifiers)
-                          (let [qualifier (first myQualifiers)]
-                            (println " QUALIFIER " qualifier "\n")
-                            (println " QUALIFIER_DEF.JAVA_TYPE " (.. qualifier -qualifierDef -javaType) "\n")
 
-                        (recur (rest myQualifiers)))))
-                  (recur (rest myComponents))))))
+(defn handleQualifiers [components]
+  (loop [myComponents components]
+    (if (not-empty myComponents)
+      (let [qualifiers (aget (first myComponents) "qualifiers")]
+        ;(println " QUALIFIERS " qualifiers "\n")
+        (loop [myQualifiers qualifiers]
+          (if (seq myQualifiers)
+            (let [qualifier (first myQualifiers)]
+              ;(println " QUALIFIER " qualifier "\n")
+              ;(println " QUALIFIER_DEF.JAVA_TYPE " (.. qualifier -qualifierDef -javaType) "\n")
+              (let [javaType (.. qualifier -qualifierDef -javaType)]
+                (if (= "ProductQualifier" javaType)
+                  ;(println " JSON_CONTENT "(.. qualifier -qualifierDef -jsonContent))))
+                  (let [jsonContent (.. qualifier -qualifierDef -jsonContent)]
+                    ;(println " JSON " (js/JSON.parse jsonContent))
+                    (let [json (js/JSON.parse jsonContent)
+                          skus (aget json "skus")
+                          productCodes (aget json "productCodes")]
+                      (doseq [sku skus]
+                        ;(println " SKU " sku)
+                        (swap! bogoDeals assoc sku sku)
+                        (println " RUNNING COUNT OF DEALS MAP " (count @bogoDeals))
+                        )
+
+                      (doseq [productCode productCodes]
+                        ;(println " PRODUCT CODE " productCode)
+                        (swap! bogoDeals assoc productCode productCode)
+                        (println " RUNNING COUNT OF DEALS MAP " (count @bogoDeals))
+                        )
+
+                    ))))
+              (recur (rest myQualifiers)))))
+        (recur (rest myComponents))))))
 
 (defn handleComponents [deals]
     (loop [myDeals deals]
@@ -164,13 +160,14 @@
               (println " DEAL " deal "\n")
               ;(println " COMPONENTS " (js/JSON.parse (get (get deal "components") "S")))))
               (let [components (js/JSON.parse (get (get deal "components") "S"))]
-                (println " COMPONENTS " components "\n")
+                ;(println " COMPONENTS " components "\n")
                 (handleQualifiers components);; WE ARE GOING TO NEED TO INLINE THIS OR PASS THE DEAL SO THAT WE CAN PUT IT IN THE MAP
                 )
 
               (println "END OF INDIVIDUAL COMPONENTS PROCESSING!!!! \n")
-          (recur (rest myDeals)))));all parens must enclose recur or you might get weird behaviours like inifinite looping
-          (println "END OF COMPONENTS AND DEALS PROCESSING!!!! \n"))
+          (recur (rest myDeals)))))
+          (println "END OF COMPONENTS AND DEALS PROCESSING!!!! \n")
+          (println "HOW BIG IS THE BOGODEALS MAP " (count @bogoDeals)))
 
 
 (defn handleDeals [err data]
