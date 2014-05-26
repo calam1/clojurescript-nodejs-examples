@@ -11,6 +11,7 @@ Included are simple examples using the following:
 - file I/O
 - AWS DynamoDB
   - this resides in the aws-dynamodb branch.  I hope this will help somebody looking for a simple example to interact with AWS (Amazon Web Services).  Although this example is DynamoDB specific, the setup of the aws-sdk and its usage should carry across most if not all AWS services.  I searched high and low for an example of Clojurescript interecting with AWS and found nothing.  Not that it is difficult to interact with the aws-sdk package, just that my level of Clojurescript coding is at beginner level so a lot of things are new and a struggle.
+  - a more complicated interaction of aws-dynamodb exists in the aws-dynamodb-create-BOGO-map branch
 
 
 
