@@ -3,7 +3,9 @@
             [cljs.core :as cljs]))
 
 (def express (node/require "express"))
+(def express-middlewares (node/require "express-middlewares"))
 (def app (express))
+(.use app (.bodyParser express-middlewares))
 (def aws (node/require "aws-sdk"))
 (def deals-all {:TableName  "commerce.business.promote.DEAL"
                            :KeyConditions {
@@ -31,11 +33,9 @@
                       (doseq [sku skus]
                         (swap! bogoDeals assoc sku deal)
                         )
-
                       (doseq [productCode productCodes]
                         (swap! bogoDeals assoc productCode deal)
                         )
-
                     ))))
               (recur (rest myQualifiers)))))
         (recur (rest myComponents))))))
@@ -44,14 +44,9 @@
     (loop [myDeals deals]
           (if (seq myDeals)
             (let [deal (first myDeals)]
-              ;(println " DEAL " deal "\n")
               (let [components (js/JSON.parse (get (get deal "components") "S"))]
-                (handleQualifiers components deal)
-                )
+                (handleQualifiers components deal))
           (recur (rest myDeals)))))
-          ;(println " GET ALL KEYS  " (keys @bogoDeals) " KEYS COUNT " (count (keys @bogoDeals)))
-          ;(prn @bogoDeals)
-          ;(println "HOW BIG IS THE BOGODEALS MAP " (count @bogoDeals)))
           (println "TEST GET A DEAL FOR PRODUCT CODE 3m-168 " (@bogoDeals "3m-168"))
           (println "TEST GET A DEAL FOR PRODUCT CODE 3l-168 " (@bogoDeals "3l-168")))
 
@@ -70,7 +65,19 @@
           (.query db (clj->js deals-all) handleDeals)))
   (.send res "populating with deals"))
 
+(defn evaluate [req res]
+  (let [body (aget req "body")]
+    ;(println " BODY OF REQUEST " (js->clj body :keywordize-keys true))
+    (let [{:keys [retailTransactionId date localCurrency retailChannel subTotal lines]} (js->clj body :keywordize-keys true)]
+      (doseq [line lines]
+        ;(println " LINE " line)
+        (let [{lineSeq :lineSeq {productCode :productCode sku :sku} :item quantity :quantity unitPrice :unitPrice extendedPrice :extendedPrice} line]
+          ;(println " LINE DESTRUCTURED lineseq: " lineSeq " productCode: " productCode " sku: " sku " qty:" quantity " unit px: " unitPrice " extend px " extendedPrice)
+        )
+      (.send res (str "lines: " lines))))))
+
 (.get app "/search/allDeals" dealsAll)
+(.post app "/evaluate" evaluate)
 
 (.listen app 8080)
 

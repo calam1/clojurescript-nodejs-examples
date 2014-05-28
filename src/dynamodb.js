@@ -14002,7 +14002,9 @@ cljs.nodejs.enable_util_print_BANG_ = function() {
 };
 var dynamodb = {dynamodb_client:{}};
 dynamodb.dynamodb_client.express = cljs.nodejs.require.call(null, "express");
+dynamodb.dynamodb_client.express_middlewares = cljs.nodejs.require.call(null, "express-middlewares");
 dynamodb.dynamodb_client.app = dynamodb.dynamodb_client.express.call(null);
+dynamodb.dynamodb_client.app.use(dynamodb.dynamodb_client.express_middlewares.bodyParser());
 dynamodb.dynamodb_client.aws = cljs.nodejs.require.call(null, "aws-sdk");
 dynamodb.dynamodb_client.deals_all = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "TableName", "TableName", 1029154507), "commerce.business.promote.DEAL", new cljs.core.Keyword(null, "KeyConditions", "KeyConditions", 3310791113), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "id", "id", 1013907597), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ComparisonOperator", "ComparisonOperator", 1620971359), "EQ", new cljs.core.Keyword(null, 
 "AttributeValueList", "AttributeValueList", 2230708741), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "S", "S", 1013904325), "78CE7EB3D8AD4468940EE679D7D37307"], null)], null)], null)], null)], null);
@@ -14079,7 +14081,38 @@ dynamodb.dynamodb_client.dealsAll = function(a, b) {
   (new dynamodb.dynamodb_client.aws.DynamoDB).query(cljs.core.clj__GT_js.call(null, dynamodb.dynamodb_client.deals_all), dynamodb.dynamodb_client.handleDeals);
   return b.send("populating with deals");
 };
+dynamodb.dynamodb_client.evaluate = function(a, b) {
+  var c = cljs.core.js__GT_clj.call(null, a.body, new cljs.core.Keyword(null, "keywordize-keys", "keywordize-keys", 4191781672), !0), d = cljs.core.seq_QMARK_.call(null, c) ? cljs.core.apply.call(null, cljs.core.hash_map, c) : c, c = cljs.core.get.call(null, d, new cljs.core.Keyword(null, "lines", "lines", 1116881521));
+  cljs.core.get.call(null, d, new cljs.core.Keyword(null, "subTotal", "subTotal", 3218999382));
+  cljs.core.get.call(null, d, new cljs.core.Keyword(null, "retailChannel", "retailChannel", 3047652850));
+  cljs.core.get.call(null, d, new cljs.core.Keyword(null, "localCurrency", "localCurrency", 4446391310));
+  cljs.core.get.call(null, d, new cljs.core.Keyword(null, "date", "date", 1016980256));
+  cljs.core.get.call(null, d, new cljs.core.Keyword(null, "retailTransactionId", "retailTransactionId", 3556821960));
+  for (var d = cljs.core.seq.call(null, c), e = null, f = 0, g = 0;;) {
+    if (g < f) {
+      var h = cljs.core._nth.call(null, e, g), h = cljs.core.seq_QMARK_.call(null, h) ? cljs.core.apply.call(null, cljs.core.hash_map, h) : h;
+      cljs.core.get.call(null, h, new cljs.core.Keyword(null, "lineSeq", "lineSeq", 1190794045));
+      var k = cljs.core.get.call(null, h, new cljs.core.Keyword(null, "item", "item", 1017147013)), k = cljs.core.seq_QMARK_.call(null, k) ? cljs.core.apply.call(null, cljs.core.hash_map, k) : k;
+      cljs.core.get.call(null, k, new cljs.core.Keyword(null, "productCode", "productCode", 3816739566));
+      cljs.core.get.call(null, k, new cljs.core.Keyword(null, "sku", "sku", 1014018191));
+      cljs.core.get.call(null, h, new cljs.core.Keyword(null, "quantity", "quantity", 4023867389));
+      cljs.core.get.call(null, h, new cljs.core.Keyword(null, "unitPrice", "unitPrice", 527707543));
+      cljs.core.get.call(null, h, new cljs.core.Keyword(null, "extendedPrice", "extendedPrice", 2708775682));
+      b.send([cljs.core.str("lines: "), cljs.core.str(c)].join(""));
+      g += 1;
+    } else {
+      if (d = cljs.core.seq.call(null, d)) {
+        cljs.core.chunked_seq_QMARK_.call(null, d) ? (f = cljs.core.chunk_first.call(null, d), d = cljs.core.chunk_rest.call(null, d), e = f, f = cljs.core.count.call(null, f)) : (e = h = cljs.core.first.call(null, d), e = cljs.core.seq_QMARK_.call(null, e) ? cljs.core.apply.call(null, cljs.core.hash_map, e) : e, cljs.core.get.call(null, e, new cljs.core.Keyword(null, "lineSeq", "lineSeq", 1190794045)), f = cljs.core.get.call(null, e, new cljs.core.Keyword(null, "item", "item", 1017147013)), f = 
+        cljs.core.seq_QMARK_.call(null, f) ? cljs.core.apply.call(null, cljs.core.hash_map, f) : f, cljs.core.get.call(null, f, new cljs.core.Keyword(null, "productCode", "productCode", 3816739566)), cljs.core.get.call(null, f, new cljs.core.Keyword(null, "sku", "sku", 1014018191)), cljs.core.get.call(null, e, new cljs.core.Keyword(null, "quantity", "quantity", 4023867389)), cljs.core.get.call(null, e, new cljs.core.Keyword(null, "unitPrice", "unitPrice", 527707543)), cljs.core.get.call(null, e, 
+        new cljs.core.Keyword(null, "extendedPrice", "extendedPrice", 2708775682)), b.send([cljs.core.str("lines: "), cljs.core.str(c)].join("")), d = cljs.core.next.call(null, d), e = null, f = 0), g = 0;
+      } else {
+        return null;
+      }
+    }
+  }
+};
 dynamodb.dynamodb_client.app.get("/search/allDeals", dynamodb.dynamodb_client.dealsAll);
+dynamodb.dynamodb_client.app.post("/evaluate", dynamodb.dynamodb_client.evaluate);
 dynamodb.dynamodb_client.app.listen(8080);
 dynamodb.dynamodb_client._main = function() {
   var a = function(a) {
