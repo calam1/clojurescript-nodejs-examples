@@ -47,8 +47,9 @@
               (let [components (js/JSON.parse (get (get deal "components") "S"))]
                 (handleQualifiers components deal))
           (recur (rest myDeals)))))
-          (println "TEST GET A DEAL FOR PRODUCT CODE 3m-168 " (@bogoDeals "3m-168"))
-          (println "TEST GET A DEAL FOR PRODUCT CODE 3l-168 " (@bogoDeals "3l-168")))
+          ;(println "TEST GET A DEAL FOR PRODUCT CODE 3m-168 " (@bogoDeals "3m-168"))
+          ;(println "TEST GET A DEAL FOR PRODUCT CODE 3l-168 " (@bogoDeals "3l-168"))
+  )
 
 (defn handleDeals [err data]
   (let [items (-> data .-Items)
@@ -67,14 +68,32 @@
 
 (defn evaluate [req res]
   (let [body (aget req "body")]
-    ;(println " BODY OF REQUEST " (js->clj body :keywordize-keys true))
     (let [{:keys [retailTransactionId date localCurrency retailChannel subTotal lines]} (js->clj body :keywordize-keys true)]
       (doseq [line lines]
-        ;(println " LINE " line)
         (let [{lineSeq :lineSeq {productCode :productCode sku :sku} :item quantity :quantity unitPrice :unitPrice extendedPrice :extendedPrice} line]
-          ;(println " LINE DESTRUCTURED lineseq: " lineSeq " productCode: " productCode " sku: " sku " qty:" quantity " unit px: " unitPrice " extend px " extendedPrice)
-        )
-      (.send res (str "lines: " lines))))))
+          (let [deal (@bogoDeals productCode)]
+            (let [components (js/JSON.parse (get (get deal "components") "S"))]
+              (doseq [myComponents components]
+                (let [qualifiers (aget myComponents "qualifiers")
+                      benefit (aget myComponents "benefit")]
+                  (doseq [myQualifiers qualifiers]
+                    (let [javaType (.. myQualifiers -qualifierDef -javaType)]
+                      (if (= "ProductQualifier" javaType)
+                        (let [jsonContent (.. myQualifiers -qualifierDef -jsonContent)]
+                          (let [json (js/JSON.parse jsonContent)
+                                productCodes (aget json "productCodes")]
+                            (doseq [prodCode productCodes]
+                              (if (= productCode prodCode)
+                                (if (not (nil? benefit))
+                                (println " QUALIFIERS " myQualifiers " BENEFIT " benefit))
+                                ;(println " PRODUCT CODES IS EQUAL " prodCode " " productCode)
+                                ;(println " PRODUCT CODES IS NOT EQUAL " prodCode " " productCode)
+                                ))))))
+                    ;(println " TEST " myQualifiers)
+                    )))
+              ;(println " COMPONENTS " components)
+              ))
+          (.send res (str "lines: " lines)))))))
 
 (.get app "/search/allDeals" dealsAll)
 (.post app "/evaluate" evaluate)

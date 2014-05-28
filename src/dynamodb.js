@@ -1730,87 +1730,87 @@ cljs.core._invoke = function() {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
     return q.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p);
-  }, s = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q) {
+  }, r = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q) {
     if (a ? a.cljs$core$IFn$_invoke$arity$14 : a) {
       return a.cljs$core$IFn$_invoke$arity$14(a, b, c, d, e, f, g, h, k, l, m, n, p, q);
-    }
-    var s;
-    s = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
-    if (!s && (s = cljs.core._invoke._, !s)) {
-      throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
-    }
-    return s.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q);
-  }, r = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s) {
-    if (a ? a.cljs$core$IFn$_invoke$arity$15 : a) {
-      return a.cljs$core$IFn$_invoke$arity$15(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s);
     }
     var r;
     r = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if (!r && (r = cljs.core._invoke._, !r)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return r.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, s);
-  }, t = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r) {
+    return r.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q);
+  }, s = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r) {
+    if (a ? a.cljs$core$IFn$_invoke$arity$15 : a) {
+      return a.cljs$core$IFn$_invoke$arity$15(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r);
+    }
+    var s;
+    s = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
+    if (!s && (s = cljs.core._invoke._, !s)) {
+      throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
+    }
+    return s.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, r);
+  }, t = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s) {
     if (a ? a.cljs$core$IFn$_invoke$arity$16 : a) {
-      return a.cljs$core$IFn$_invoke$arity$16(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r);
+      return a.cljs$core$IFn$_invoke$arity$16(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s);
     }
     var t;
     t = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if (!t && (t = cljs.core._invoke._, !t)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return t.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r);
-  }, w = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t) {
+    return t.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s);
+  }, w = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t) {
     if (a ? a.cljs$core$IFn$_invoke$arity$17 : a) {
-      return a.cljs$core$IFn$_invoke$arity$17(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t);
+      return a.cljs$core$IFn$_invoke$arity$17(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t);
     }
     var u;
     u = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if (!u && (u = cljs.core._invoke._, !u)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return u.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t);
-  }, v = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u) {
+    return u.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t);
+  }, v = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u) {
     if (a ? a.cljs$core$IFn$_invoke$arity$18 : a) {
-      return a.cljs$core$IFn$_invoke$arity$18(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u);
+      return a.cljs$core$IFn$_invoke$arity$18(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u);
     }
     var v;
     v = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if (!v && (v = cljs.core._invoke._, !v)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return v.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u);
-  }, u = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u, v) {
+    return v.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u);
+  }, u = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u, v) {
     if (a ? a.cljs$core$IFn$_invoke$arity$19 : a) {
-      return a.cljs$core$IFn$_invoke$arity$19(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u, v);
+      return a.cljs$core$IFn$_invoke$arity$19(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u, v);
     }
     var w;
     w = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if (!w && (w = cljs.core._invoke._, !w)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return w.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u, v);
-  }, B = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u, v, w) {
+    return w.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u, v);
+  }, A = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u, v, w) {
     if (a ? a.cljs$core$IFn$_invoke$arity$20 : a) {
-      return a.cljs$core$IFn$_invoke$arity$20(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u, v, w);
+      return a.cljs$core$IFn$_invoke$arity$20(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u, v, w);
     }
-    var B;
-    B = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
-    if (!B && (B = cljs.core._invoke._, !B)) {
+    var A;
+    A = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
+    if (!A && (A = cljs.core._invoke._, !A)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return B.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u, v, w);
-  }, I = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u, v, w, B) {
+    return A.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u, v, w);
+  }, J = function(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u, v, w, A) {
     if (a ? a.cljs$core$IFn$_invoke$arity$21 : a) {
-      return a.cljs$core$IFn$_invoke$arity$21(a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u, v, w, B);
+      return a.cljs$core$IFn$_invoke$arity$21(a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u, v, w, A);
     }
-    var I;
-    I = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
-    if (!I && (I = cljs.core._invoke._, !I)) {
+    var J;
+    J = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
+    if (!J && (J = cljs.core._invoke._, !J)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return I.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, s, r, t, u, v, w, B);
-  }, a = function(a, x, y, z, A, C, D, E, F, G, H, J, K, L, M, N, O, P, Q, S, T) {
+    return J.call(null, a, b, c, d, e, f, g, h, k, l, m, n, p, q, r, s, t, u, v, w, A);
+  }, a = function(a, x, y, B, z, C, E, D, F, H, G, K, L, I, N, P, T, V, W, X, U) {
     switch(arguments.length) {
       case 1:
         return b.call(this, a);
@@ -1819,41 +1819,41 @@ cljs.core._invoke = function() {
       case 3:
         return d.call(this, a, x, y);
       case 4:
-        return e.call(this, a, x, y, z);
+        return e.call(this, a, x, y, B);
       case 5:
-        return f.call(this, a, x, y, z, A);
+        return f.call(this, a, x, y, B, z);
       case 6:
-        return g.call(this, a, x, y, z, A, C);
+        return g.call(this, a, x, y, B, z, C);
       case 7:
-        return h.call(this, a, x, y, z, A, C, D);
+        return h.call(this, a, x, y, B, z, C, E);
       case 8:
-        return k.call(this, a, x, y, z, A, C, D, E);
+        return k.call(this, a, x, y, B, z, C, E, D);
       case 9:
-        return l.call(this, a, x, y, z, A, C, D, E, F);
+        return l.call(this, a, x, y, B, z, C, E, D, F);
       case 10:
-        return m.call(this, a, x, y, z, A, C, D, E, F, G);
+        return m.call(this, a, x, y, B, z, C, E, D, F, H);
       case 11:
-        return n.call(this, a, x, y, z, A, C, D, E, F, G, H);
+        return n.call(this, a, x, y, B, z, C, E, D, F, H, G);
       case 12:
-        return p.call(this, a, x, y, z, A, C, D, E, F, G, H, J);
+        return p.call(this, a, x, y, B, z, C, E, D, F, H, G, K);
       case 13:
-        return q.call(this, a, x, y, z, A, C, D, E, F, G, H, J, K);
+        return q.call(this, a, x, y, B, z, C, E, D, F, H, G, K, L);
       case 14:
-        return s.call(this, a, x, y, z, A, C, D, E, F, G, H, J, K, L);
+        return r.call(this, a, x, y, B, z, C, E, D, F, H, G, K, L, I);
       case 15:
-        return r.call(this, a, x, y, z, A, C, D, E, F, G, H, J, K, L, M);
+        return s.call(this, a, x, y, B, z, C, E, D, F, H, G, K, L, I, N);
       case 16:
-        return t.call(this, a, x, y, z, A, C, D, E, F, G, H, J, K, L, M, N);
+        return t.call(this, a, x, y, B, z, C, E, D, F, H, G, K, L, I, N, P);
       case 17:
-        return w.call(this, a, x, y, z, A, C, D, E, F, G, H, J, K, L, M, N, O);
+        return w.call(this, a, x, y, B, z, C, E, D, F, H, G, K, L, I, N, P, T);
       case 18:
-        return v.call(this, a, x, y, z, A, C, D, E, F, G, H, J, K, L, M, N, O, P);
+        return v.call(this, a, x, y, B, z, C, E, D, F, H, G, K, L, I, N, P, T, V);
       case 19:
-        return u.call(this, a, x, y, z, A, C, D, E, F, G, H, J, K, L, M, N, O, P, Q);
+        return u.call(this, a, x, y, B, z, C, E, D, F, H, G, K, L, I, N, P, T, V, W);
       case 20:
-        return B.call(this, a, x, y, z, A, C, D, E, F, G, H, J, K, L, M, N, O, P, Q, S);
+        return A.call(this, a, x, y, B, z, C, E, D, F, H, G, K, L, I, N, P, T, V, W, X);
       case 21:
-        return I.call(this, a, x, y, z, A, C, D, E, F, G, H, J, K, L, M, N, O, P, Q, S, T);
+        return J.call(this, a, x, y, B, z, C, E, D, F, H, G, K, L, I, N, P, T, V, W, X, U);
     }
     throw Error("Invalid arity: " + arguments.length);
   };
@@ -1870,14 +1870,14 @@ cljs.core._invoke = function() {
   a.cljs$core$IFn$_invoke$arity$11 = n;
   a.cljs$core$IFn$_invoke$arity$12 = p;
   a.cljs$core$IFn$_invoke$arity$13 = q;
-  a.cljs$core$IFn$_invoke$arity$14 = s;
-  a.cljs$core$IFn$_invoke$arity$15 = r;
+  a.cljs$core$IFn$_invoke$arity$14 = r;
+  a.cljs$core$IFn$_invoke$arity$15 = s;
   a.cljs$core$IFn$_invoke$arity$16 = t;
   a.cljs$core$IFn$_invoke$arity$17 = w;
   a.cljs$core$IFn$_invoke$arity$18 = v;
   a.cljs$core$IFn$_invoke$arity$19 = u;
-  a.cljs$core$IFn$_invoke$arity$20 = B;
-  a.cljs$core$IFn$_invoke$arity$21 = I;
+  a.cljs$core$IFn$_invoke$arity$20 = A;
+  a.cljs$core$IFn$_invoke$arity$21 = J;
   return a;
 }();
 cljs.core.ICloneable = function() {
@@ -6287,43 +6287,43 @@ cljs.core.apply_to = function(a, b, c) {
   if (11 === b) {
     return a.cljs$core$IFn$_invoke$arity$11 ? a.cljs$core$IFn$_invoke$arity$11(c, d, e, f, g, a, h, k, l, m, n) : a.call(null, c, d, e, f, g, a, h, k, l, m, n);
   }
-  var p = cljs.core._first.call(null, q), s = cljs.core._rest.call(null, q);
+  var p = cljs.core._first.call(null, q), r = cljs.core._rest.call(null, q);
   if (12 === b) {
     return a.cljs$core$IFn$_invoke$arity$12 ? a.cljs$core$IFn$_invoke$arity$12(c, d, e, f, g, a, h, k, l, m, n, p) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p);
   }
-  var q = cljs.core._first.call(null, s), r = cljs.core._rest.call(null, s);
+  var q = cljs.core._first.call(null, r), s = cljs.core._rest.call(null, r);
   if (13 === b) {
     return a.cljs$core$IFn$_invoke$arity$13 ? a.cljs$core$IFn$_invoke$arity$13(c, d, e, f, g, a, h, k, l, m, n, p, q) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q);
   }
-  var s = cljs.core._first.call(null, r), t = cljs.core._rest.call(null, r);
+  var r = cljs.core._first.call(null, s), t = cljs.core._rest.call(null, s);
   if (14 === b) {
-    return a.cljs$core$IFn$_invoke$arity$14 ? a.cljs$core$IFn$_invoke$arity$14(c, d, e, f, g, a, h, k, l, m, n, p, q, s) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, s);
+    return a.cljs$core$IFn$_invoke$arity$14 ? a.cljs$core$IFn$_invoke$arity$14(c, d, e, f, g, a, h, k, l, m, n, p, q, r) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, r);
   }
-  var r = cljs.core._first.call(null, t), w = cljs.core._rest.call(null, t);
+  var s = cljs.core._first.call(null, t), w = cljs.core._rest.call(null, t);
   if (15 === b) {
-    return a.cljs$core$IFn$_invoke$arity$15 ? a.cljs$core$IFn$_invoke$arity$15(c, d, e, f, g, a, h, k, l, m, n, p, q, s, r) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, s, r);
+    return a.cljs$core$IFn$_invoke$arity$15 ? a.cljs$core$IFn$_invoke$arity$15(c, d, e, f, g, a, h, k, l, m, n, p, q, r, s) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, r, s);
   }
   var t = cljs.core._first.call(null, w), v = cljs.core._rest.call(null, w);
   if (16 === b) {
-    return a.cljs$core$IFn$_invoke$arity$16 ? a.cljs$core$IFn$_invoke$arity$16(c, d, e, f, g, a, h, k, l, m, n, p, q, s, r, t) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, s, r, t);
+    return a.cljs$core$IFn$_invoke$arity$16 ? a.cljs$core$IFn$_invoke$arity$16(c, d, e, f, g, a, h, k, l, m, n, p, q, r, s, t) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, r, s, t);
   }
   var w = cljs.core._first.call(null, v), u = cljs.core._rest.call(null, v);
   if (17 === b) {
-    return a.cljs$core$IFn$_invoke$arity$17 ? a.cljs$core$IFn$_invoke$arity$17(c, d, e, f, g, a, h, k, l, m, n, p, q, s, r, t, w) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, s, r, t, w);
+    return a.cljs$core$IFn$_invoke$arity$17 ? a.cljs$core$IFn$_invoke$arity$17(c, d, e, f, g, a, h, k, l, m, n, p, q, r, s, t, w) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, r, s, t, w);
   }
-  var v = cljs.core._first.call(null, u), B = cljs.core._rest.call(null, u);
+  var v = cljs.core._first.call(null, u), A = cljs.core._rest.call(null, u);
   if (18 === b) {
-    return a.cljs$core$IFn$_invoke$arity$18 ? a.cljs$core$IFn$_invoke$arity$18(c, d, e, f, g, a, h, k, l, m, n, p, q, s, r, t, w, v) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, s, r, t, w, v);
+    return a.cljs$core$IFn$_invoke$arity$18 ? a.cljs$core$IFn$_invoke$arity$18(c, d, e, f, g, a, h, k, l, m, n, p, q, r, s, t, w, v) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, r, s, t, w, v);
   }
-  u = cljs.core._first.call(null, B);
-  B = cljs.core._rest.call(null, B);
+  u = cljs.core._first.call(null, A);
+  A = cljs.core._rest.call(null, A);
   if (19 === b) {
-    return a.cljs$core$IFn$_invoke$arity$19 ? a.cljs$core$IFn$_invoke$arity$19(c, d, e, f, g, a, h, k, l, m, n, p, q, s, r, t, w, v, u) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, s, r, t, w, v, u);
+    return a.cljs$core$IFn$_invoke$arity$19 ? a.cljs$core$IFn$_invoke$arity$19(c, d, e, f, g, a, h, k, l, m, n, p, q, r, s, t, w, v, u) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, r, s, t, w, v, u);
   }
-  var I = cljs.core._first.call(null, B);
-  cljs.core._rest.call(null, B);
+  var J = cljs.core._first.call(null, A);
+  cljs.core._rest.call(null, A);
   if (20 === b) {
-    return a.cljs$core$IFn$_invoke$arity$20 ? a.cljs$core$IFn$_invoke$arity$20(c, d, e, f, g, a, h, k, l, m, n, p, q, s, r, t, w, v, u, I) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, s, r, t, w, v, u, I);
+    return a.cljs$core$IFn$_invoke$arity$20 ? a.cljs$core$IFn$_invoke$arity$20(c, d, e, f, g, a, h, k, l, m, n, p, q, r, s, t, w, v, u, J) : a.call(null, c, d, e, f, g, a, h, k, l, m, n, p, q, r, s, t, w, v, u, J);
   }
   throw Error("Only up to 20 arguments supported on functions");
 };
@@ -6357,9 +6357,9 @@ cljs.core.apply = function() {
       c = a.cljs$lang$maxFixedArity;
       return a.cljs$lang$applyTo ? (d = cljs.core.bounded_count.call(null, b, c + 1), d <= c ? cljs.core.apply_to.call(null, a, d, b) : a.cljs$lang$applyTo(b)) : a.apply(a, cljs.core.to_array.call(null, b));
     }, b = function(b, c, d, e, f, h) {
-      var s = null;
-      5 < arguments.length && (s = cljs.core.array_seq(Array.prototype.slice.call(arguments, 5), 0));
-      return a.call(this, b, c, d, e, f, s);
+      var r = null;
+      5 < arguments.length && (r = cljs.core.array_seq(Array.prototype.slice.call(arguments, 5), 0));
+      return a.call(this, b, c, d, e, f, r);
     };
     b.cljs$lang$maxFixedArity = 5;
     b.cljs$lang$applyTo = function(b) {
@@ -8229,12 +8229,12 @@ cljs.core.update_in = function() {
     return(c = cljs.core.nthnext.call(null, c, 1)) ? cljs.core.assoc.call(null, b, p, a.call(null, cljs.core.get.call(null, b, p), c, d, e, f, n)) : cljs.core.assoc.call(null, b, p, d.call(null, cljs.core.get.call(null, b, p), e, f, n));
   }, f = function() {
     var b = function(b, c, d, e, f, g, h) {
-      var r = cljs.core.nth.call(null, c, 0, null);
-      return(c = cljs.core.nthnext.call(null, c, 1)) ? cljs.core.assoc.call(null, b, r, cljs.core.apply.call(null, a, cljs.core.get.call(null, b, r), c, d, e, f, g, h)) : cljs.core.assoc.call(null, b, r, cljs.core.apply.call(null, d, cljs.core.get.call(null, b, r), e, f, g, h));
-    }, c = function(a, c, d, e, f, h, s) {
-      var r = null;
-      6 < arguments.length && (r = cljs.core.array_seq(Array.prototype.slice.call(arguments, 6), 0));
-      return b.call(this, a, c, d, e, f, h, r);
+      var s = cljs.core.nth.call(null, c, 0, null);
+      return(c = cljs.core.nthnext.call(null, c, 1)) ? cljs.core.assoc.call(null, b, s, cljs.core.apply.call(null, a, cljs.core.get.call(null, b, s), c, d, e, f, g, h)) : cljs.core.assoc.call(null, b, s, cljs.core.apply.call(null, d, cljs.core.get.call(null, b, s), e, f, g, h));
+    }, c = function(a, c, d, e, f, h, r) {
+      var s = null;
+      6 < arguments.length && (s = cljs.core.array_seq(Array.prototype.slice.call(arguments, 6), 0));
+      return b.call(this, a, c, d, e, f, h, s);
     };
     c.cljs$lang$maxFixedArity = 6;
     c.cljs$lang$applyTo = function(a) {
@@ -8248,9 +8248,9 @@ cljs.core.update_in = function() {
       a = cljs.core.next(a);
       var h = cljs.core.first(a);
       a = cljs.core.next(a);
-      var s = cljs.core.first(a);
+      var r = cljs.core.first(a);
       a = cljs.core.rest(a);
-      return b(c, d, e, f, h, s, a);
+      return b(c, d, e, f, h, r, a);
     };
     c.cljs$core$IFn$_invoke$arity$variadic = b;
     return c;
@@ -13296,10 +13296,10 @@ cljs.core.js__GT_clj = function() {
       if (cljs.core.seq.call(null, b)) {
         var c = cljs.core.seq_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.hash_map, b) : b, d = cljs.core.get.call(null, c, new cljs.core.Keyword(null, "keywordize-keys", "keywordize-keys", 4191781672)), e = cljs.core.truth_(d) ? cljs.core.keyword : cljs.core.str;
         return function(a, b, c, d) {
-          return function r(e) {
-            return cljs.core.seq_QMARK_.call(null, e) ? cljs.core.doall.call(null, cljs.core.map.call(null, r, e)) : cljs.core.coll_QMARK_.call(null, e) ? cljs.core.into.call(null, cljs.core.empty.call(null, e), cljs.core.map.call(null, r, e)) : e instanceof Array ? cljs.core.vec.call(null, cljs.core.map.call(null, r, e)) : cljs.core.type.call(null, e) === Object ? cljs.core.into.call(null, cljs.core.PersistentArrayMap.EMPTY, function() {
+          return function s(e) {
+            return cljs.core.seq_QMARK_.call(null, e) ? cljs.core.doall.call(null, cljs.core.map.call(null, s, e)) : cljs.core.coll_QMARK_.call(null, e) ? cljs.core.into.call(null, cljs.core.empty.call(null, e), cljs.core.map.call(null, s, e)) : e instanceof Array ? cljs.core.vec.call(null, cljs.core.map.call(null, s, e)) : cljs.core.type.call(null, e) === Object ? cljs.core.into.call(null, cljs.core.PersistentArrayMap.EMPTY, function() {
               return function(a, b, c, d) {
-                return function R(f) {
+                return function M(f) {
                   return new cljs.core.LazySeq(null, function(a, b, c, d) {
                     return function() {
                       for (;;) {
@@ -13311,7 +13311,7 @@ cljs.core.js__GT_clj = function() {
                               for (var h = 0;;) {
                                 if (h < c) {
                                   var k = cljs.core._nth.call(null, b, h);
-                                  cljs.core.chunk_append.call(null, g, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [d.call(null, k), r.call(null, e[k])], null));
+                                  cljs.core.chunk_append.call(null, g, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [d.call(null, k), s.call(null, e[k])], null));
                                   h += 1;
                                 } else {
                                   b = !0;
@@ -13320,10 +13320,10 @@ cljs.core.js__GT_clj = function() {
                               }
                               b = void 0;
                             }
-                            return b ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), R.call(null, cljs.core.chunk_rest.call(null, a))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), null);
+                            return b ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), M.call(null, cljs.core.chunk_rest.call(null, a))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), null);
                           }
                           g = cljs.core.first.call(null, a);
-                          return cljs.core.cons.call(null, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [d.call(null, g), r.call(null, e[g])], null), R.call(null, cljs.core.rest.call(null, a)));
+                          return cljs.core.cons.call(null, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [d.call(null, g), s.call(null, e[g])], null), M.call(null, cljs.core.rest.call(null, a)));
                         }
                         return null;
                       }
@@ -14061,11 +14061,9 @@ dynamodb.dynamodb_client.handleComponents = function(a) {
       dynamodb.dynamodb_client.handleQualifiers.call(null, c, b);
       a = cljs.core.rest.call(null, a);
     } else {
-      break;
+      return null;
     }
   }
-  cljs.core.println.call(null, "TEST GET A DEAL FOR PRODUCT CODE 3m-168 ", cljs.core.deref.call(null, dynamodb.dynamodb_client.bogoDeals).call(null, "3m-168"));
-  return cljs.core.println.call(null, "TEST GET A DEAL FOR PRODUCT CODE 3l-168 ", cljs.core.deref.call(null, dynamodb.dynamodb_client.bogoDeals).call(null, "3l-168"));
 };
 dynamodb.dynamodb_client.handleDeals = function(a, b) {
   var c = b.Items, d = cljs.core.seq.call(null, cljs.core.js__GT_clj.call(null, c)), c = cljs.core.filter.call(null, function(a, b) {
@@ -14082,29 +14080,379 @@ dynamodb.dynamodb_client.dealsAll = function(a, b) {
   return b.send("populating with deals");
 };
 dynamodb.dynamodb_client.evaluate = function(a, b) {
-  var c = cljs.core.js__GT_clj.call(null, a.body, new cljs.core.Keyword(null, "keywordize-keys", "keywordize-keys", 4191781672), !0), d = cljs.core.seq_QMARK_.call(null, c) ? cljs.core.apply.call(null, cljs.core.hash_map, c) : c, c = cljs.core.get.call(null, d, new cljs.core.Keyword(null, "lines", "lines", 1116881521));
+  var c = cljs.core.js__GT_clj.call(null, a.body, new cljs.core.Keyword(null, "keywordize-keys", "keywordize-keys", 4191781672), !0), d = cljs.core.seq_QMARK_.call(null, c) ? cljs.core.apply.call(null, cljs.core.hash_map, c) : c, e = cljs.core.get.call(null, d, new cljs.core.Keyword(null, "lines", "lines", 1116881521));
   cljs.core.get.call(null, d, new cljs.core.Keyword(null, "subTotal", "subTotal", 3218999382));
   cljs.core.get.call(null, d, new cljs.core.Keyword(null, "retailChannel", "retailChannel", 3047652850));
   cljs.core.get.call(null, d, new cljs.core.Keyword(null, "localCurrency", "localCurrency", 4446391310));
   cljs.core.get.call(null, d, new cljs.core.Keyword(null, "date", "date", 1016980256));
   cljs.core.get.call(null, d, new cljs.core.Keyword(null, "retailTransactionId", "retailTransactionId", 3556821960));
-  for (var d = cljs.core.seq.call(null, c), e = null, f = 0, g = 0;;) {
-    if (g < f) {
-      var h = cljs.core._nth.call(null, e, g), h = cljs.core.seq_QMARK_.call(null, h) ? cljs.core.apply.call(null, cljs.core.hash_map, h) : h;
-      cljs.core.get.call(null, h, new cljs.core.Keyword(null, "lineSeq", "lineSeq", 1190794045));
-      var k = cljs.core.get.call(null, h, new cljs.core.Keyword(null, "item", "item", 1017147013)), k = cljs.core.seq_QMARK_.call(null, k) ? cljs.core.apply.call(null, cljs.core.hash_map, k) : k;
-      cljs.core.get.call(null, k, new cljs.core.Keyword(null, "productCode", "productCode", 3816739566));
-      cljs.core.get.call(null, k, new cljs.core.Keyword(null, "sku", "sku", 1014018191));
-      cljs.core.get.call(null, h, new cljs.core.Keyword(null, "quantity", "quantity", 4023867389));
-      cljs.core.get.call(null, h, new cljs.core.Keyword(null, "unitPrice", "unitPrice", 527707543));
-      cljs.core.get.call(null, h, new cljs.core.Keyword(null, "extendedPrice", "extendedPrice", 2708775682));
-      b.send([cljs.core.str("lines: "), cljs.core.str(c)].join(""));
-      g += 1;
+  for (var f = cljs.core.seq.call(null, e), g = null, h = 0, k = 0;;) {
+    if (k < h) {
+      var l = cljs.core._nth.call(null, g, k), m = l, n = cljs.core.seq_QMARK_.call(null, m) ? cljs.core.apply.call(null, cljs.core.hash_map, m) : m;
+      cljs.core.get.call(null, n, new cljs.core.Keyword(null, "lineSeq", "lineSeq", 1190794045));
+      var p = cljs.core.get.call(null, n, new cljs.core.Keyword(null, "item", "item", 1017147013)), q = cljs.core.seq_QMARK_.call(null, p) ? cljs.core.apply.call(null, cljs.core.hash_map, p) : p, r = cljs.core.get.call(null, q, new cljs.core.Keyword(null, "productCode", "productCode", 3816739566));
+      cljs.core.get.call(null, q, new cljs.core.Keyword(null, "sku", "sku", 1014018191));
+      cljs.core.get.call(null, n, new cljs.core.Keyword(null, "quantity", "quantity", 4023867389));
+      cljs.core.get.call(null, n, new cljs.core.Keyword(null, "unitPrice", "unitPrice", 527707543));
+      cljs.core.get.call(null, n, new cljs.core.Keyword(null, "extendedPrice", "extendedPrice", 2708775682));
+      for (var s = cljs.core.deref.call(null, dynamodb.dynamodb_client.bogoDeals).call(null, r), t = JSON.parse(cljs.core.get.call(null, cljs.core.get.call(null, s, "components"), "S")), w = cljs.core.seq.call(null, t), v = null, u = 0, A = 0;;) {
+        if (A < u) {
+          for (var J = cljs.core._nth.call(null, v, A), M = J.benefit, x = cljs.core.seq.call(null, J.qualifiers), y = null, B = 0, z = 0;;) {
+            if (z < B) {
+              var C = cljs.core._nth.call(null, y, z);
+              if (cljs.core._EQ_.call(null, "ProductQualifier", C.qualifierDef.javaType)) {
+                for (var E = JSON.parse(C.qualifierDef.jsonContent).productCodes, D = cljs.core.seq.call(null, E), F = null, H = 0, G = 0;;) {
+                  if (G < H) {
+                    var K = cljs.core._nth.call(null, F, G);
+                    cljs.core._EQ_.call(null, r, K) && null != M && cljs.core.println.call(null, " QUALIFIERS ", C, " BENEFIT ", M);
+                    G += 1;
+                  } else {
+                    var L = cljs.core.seq.call(null, D);
+                    if (L) {
+                      var I = L;
+                      if (cljs.core.chunked_seq_QMARK_.call(null, I)) {
+                        var N = cljs.core.chunk_first.call(null, I), P = cljs.core.chunk_rest.call(null, I), T = N, V = cljs.core.count.call(null, N), D = P, F = T, H = V
+                      } else {
+                        var W = cljs.core.first.call(null, I);
+                        cljs.core._EQ_.call(null, r, W) && null != M && cljs.core.println.call(null, " QUALIFIERS ", C, " BENEFIT ", M);
+                        D = cljs.core.next.call(null, I);
+                        F = null;
+                        H = 0;
+                      }
+                      G = 0;
+                    } else {
+                      break;
+                    }
+                  }
+                }
+              }
+              z += 1;
+            } else {
+              var X = cljs.core.seq.call(null, x);
+              if (X) {
+                var U = X;
+                if (cljs.core.chunked_seq_QMARK_.call(null, U)) {
+                  var lb = cljs.core.chunk_first.call(null, U), Qb = cljs.core.chunk_rest.call(null, U), Rb = lb, Sb = cljs.core.count.call(null, lb), x = Qb, y = Rb, B = Sb
+                } else {
+                  var wa = cljs.core.first.call(null, U);
+                  if (cljs.core._EQ_.call(null, "ProductQualifier", wa.qualifierDef.javaType)) {
+                    for (var Tb = JSON.parse(wa.qualifierDef.jsonContent).productCodes, Da = cljs.core.seq.call(null, Tb), Ea = null, Fa = 0, Y = 0;;) {
+                      if (Y < Fa) {
+                        var Ub = cljs.core._nth.call(null, Ea, Y);
+                        cljs.core._EQ_.call(null, r, Ub) && null != M && cljs.core.println.call(null, " QUALIFIERS ", wa, " BENEFIT ", M);
+                        Y += 1;
+                      } else {
+                        var mb = cljs.core.seq.call(null, Da);
+                        if (mb) {
+                          var Z = mb;
+                          if (cljs.core.chunked_seq_QMARK_.call(null, Z)) {
+                            var nb = cljs.core.chunk_first.call(null, Z), Vb = cljs.core.chunk_rest.call(null, Z), Wb = nb, Xb = cljs.core.count.call(null, nb), Da = Vb, Ea = Wb, Fa = Xb
+                          } else {
+                            var Yb = cljs.core.first.call(null, Z);
+                            cljs.core._EQ_.call(null, r, Yb) && null != M && cljs.core.println.call(null, " QUALIFIERS ", wa, " BENEFIT ", M);
+                            Da = cljs.core.next.call(null, Z);
+                            Ea = null;
+                            Fa = 0;
+                          }
+                          Y = 0;
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                  }
+                  x = cljs.core.next.call(null, U);
+                  y = null;
+                  B = 0;
+                }
+                z = 0;
+              } else {
+                break;
+              }
+            }
+          }
+          A += 1;
+        } else {
+          var ob = cljs.core.seq.call(null, w);
+          if (ob) {
+            var $ = ob;
+            if (cljs.core.chunked_seq_QMARK_.call(null, $)) {
+              var pb = cljs.core.chunk_first.call(null, $), Zb = cljs.core.chunk_rest.call(null, $), $b = pb, ac = cljs.core.count.call(null, pb), w = Zb, v = $b, u = ac
+            } else {
+              for (var qb = cljs.core.first.call(null, $), Q = qb.benefit, Ga = cljs.core.seq.call(null, qb.qualifiers), Ha = null, Ia = 0, aa = 0;;) {
+                if (aa < Ia) {
+                  var xa = cljs.core._nth.call(null, Ha, aa);
+                  if (cljs.core._EQ_.call(null, "ProductQualifier", xa.qualifierDef.javaType)) {
+                    for (var bc = JSON.parse(xa.qualifierDef.jsonContent).productCodes, Ja = cljs.core.seq.call(null, bc), Ka = null, La = 0, ba = 0;;) {
+                      if (ba < La) {
+                        var cc = cljs.core._nth.call(null, Ka, ba);
+                        cljs.core._EQ_.call(null, r, cc) && null != Q && cljs.core.println.call(null, " QUALIFIERS ", xa, " BENEFIT ", Q);
+                        ba += 1;
+                      } else {
+                        var rb = cljs.core.seq.call(null, Ja);
+                        if (rb) {
+                          var ca = rb;
+                          if (cljs.core.chunked_seq_QMARK_.call(null, ca)) {
+                            var sb = cljs.core.chunk_first.call(null, ca), dc = cljs.core.chunk_rest.call(null, ca), ec = sb, fc = cljs.core.count.call(null, sb), Ja = dc, Ka = ec, La = fc
+                          } else {
+                            var gc = cljs.core.first.call(null, ca);
+                            cljs.core._EQ_.call(null, r, gc) && null != Q && cljs.core.println.call(null, " QUALIFIERS ", xa, " BENEFIT ", Q);
+                            Ja = cljs.core.next.call(null, ca);
+                            Ka = null;
+                            La = 0;
+                          }
+                          ba = 0;
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                  }
+                  aa += 1;
+                } else {
+                  var tb = cljs.core.seq.call(null, Ga);
+                  if (tb) {
+                    var da = tb;
+                    if (cljs.core.chunked_seq_QMARK_.call(null, da)) {
+                      var ub = cljs.core.chunk_first.call(null, da), hc = cljs.core.chunk_rest.call(null, da), ic = ub, jc = cljs.core.count.call(null, ub), Ga = hc, Ha = ic, Ia = jc
+                    } else {
+                      var ya = cljs.core.first.call(null, da);
+                      if (cljs.core._EQ_.call(null, "ProductQualifier", ya.qualifierDef.javaType)) {
+                        for (var kc = JSON.parse(ya.qualifierDef.jsonContent).productCodes, Ma = cljs.core.seq.call(null, kc), Na = null, Oa = 0, ea = 0;;) {
+                          if (ea < Oa) {
+                            var lc = cljs.core._nth.call(null, Na, ea);
+                            cljs.core._EQ_.call(null, r, lc) && null != Q && cljs.core.println.call(null, " QUALIFIERS ", ya, " BENEFIT ", Q);
+                            ea += 1;
+                          } else {
+                            var vb = cljs.core.seq.call(null, Ma);
+                            if (vb) {
+                              var fa = vb;
+                              if (cljs.core.chunked_seq_QMARK_.call(null, fa)) {
+                                var wb = cljs.core.chunk_first.call(null, fa), mc = cljs.core.chunk_rest.call(null, fa), nc = wb, oc = cljs.core.count.call(null, wb), Ma = mc, Na = nc, Oa = oc
+                              } else {
+                                var pc = cljs.core.first.call(null, fa);
+                                cljs.core._EQ_.call(null, r, pc) && null != Q && cljs.core.println.call(null, " QUALIFIERS ", ya, " BENEFIT ", Q);
+                                Ma = cljs.core.next.call(null, fa);
+                                Na = null;
+                                Oa = 0;
+                              }
+                              ea = 0;
+                            } else {
+                              break;
+                            }
+                          }
+                        }
+                      }
+                      Ga = cljs.core.next.call(null, da);
+                      Ha = null;
+                      Ia = 0;
+                    }
+                    aa = 0;
+                  } else {
+                    break;
+                  }
+                }
+              }
+              w = cljs.core.next.call(null, $);
+              v = null;
+              u = 0;
+            }
+            A = 0;
+          } else {
+            break;
+          }
+        }
+      }
+      b.send([cljs.core.str("lines: "), cljs.core.str(e)].join(""));
+      k += 1;
     } else {
-      if (d = cljs.core.seq.call(null, d)) {
-        cljs.core.chunked_seq_QMARK_.call(null, d) ? (f = cljs.core.chunk_first.call(null, d), d = cljs.core.chunk_rest.call(null, d), e = f, f = cljs.core.count.call(null, f)) : (e = h = cljs.core.first.call(null, d), e = cljs.core.seq_QMARK_.call(null, e) ? cljs.core.apply.call(null, cljs.core.hash_map, e) : e, cljs.core.get.call(null, e, new cljs.core.Keyword(null, "lineSeq", "lineSeq", 1190794045)), f = cljs.core.get.call(null, e, new cljs.core.Keyword(null, "item", "item", 1017147013)), f = 
-        cljs.core.seq_QMARK_.call(null, f) ? cljs.core.apply.call(null, cljs.core.hash_map, f) : f, cljs.core.get.call(null, f, new cljs.core.Keyword(null, "productCode", "productCode", 3816739566)), cljs.core.get.call(null, f, new cljs.core.Keyword(null, "sku", "sku", 1014018191)), cljs.core.get.call(null, e, new cljs.core.Keyword(null, "quantity", "quantity", 4023867389)), cljs.core.get.call(null, e, new cljs.core.Keyword(null, "unitPrice", "unitPrice", 527707543)), cljs.core.get.call(null, e, 
-        new cljs.core.Keyword(null, "extendedPrice", "extendedPrice", 2708775682)), b.send([cljs.core.str("lines: "), cljs.core.str(c)].join("")), d = cljs.core.next.call(null, d), e = null, f = 0), g = 0;
+      var xb = cljs.core.seq.call(null, f);
+      if (xb) {
+        var ga = xb;
+        if (cljs.core.chunked_seq_QMARK_.call(null, ga)) {
+          var yb = cljs.core.chunk_first.call(null, ga), qc = cljs.core.chunk_rest.call(null, ga), rc = yb, sc = cljs.core.count.call(null, yb), f = qc, g = rc, h = sc
+        } else {
+          var Pa = l = cljs.core.first.call(null, ga), ha = cljs.core.seq_QMARK_.call(null, Pa) ? cljs.core.apply.call(null, cljs.core.hash_map, Pa) : Pa;
+          cljs.core.get.call(null, ha, new cljs.core.Keyword(null, "lineSeq", "lineSeq", 1190794045));
+          var Qa = cljs.core.get.call(null, ha, new cljs.core.Keyword(null, "item", "item", 1017147013)), zb = cljs.core.seq_QMARK_.call(null, Qa) ? cljs.core.apply.call(null, cljs.core.hash_map, Qa) : Qa, O = cljs.core.get.call(null, zb, new cljs.core.Keyword(null, "productCode", "productCode", 3816739566));
+          cljs.core.get.call(null, zb, new cljs.core.Keyword(null, "sku", "sku", 1014018191));
+          cljs.core.get.call(null, ha, new cljs.core.Keyword(null, "quantity", "quantity", 4023867389));
+          cljs.core.get.call(null, ha, new cljs.core.Keyword(null, "unitPrice", "unitPrice", 527707543));
+          cljs.core.get.call(null, ha, new cljs.core.Keyword(null, "extendedPrice", "extendedPrice", 2708775682));
+          for (var tc = cljs.core.deref.call(null, dynamodb.dynamodb_client.bogoDeals).call(null, O), uc = JSON.parse(cljs.core.get.call(null, cljs.core.get.call(null, tc, "components"), "S")), Ra = cljs.core.seq.call(null, uc), Sa = null, Ta = 0, ia = 0;;) {
+            if (ia < Ta) {
+              for (var Ab = cljs.core._nth.call(null, Sa, ia), R = Ab.benefit, Ua = cljs.core.seq.call(null, Ab.qualifiers), Va = null, Wa = 0, ja = 0;;) {
+                if (ja < Wa) {
+                  var za = cljs.core._nth.call(null, Va, ja);
+                  if (cljs.core._EQ_.call(null, "ProductQualifier", za.qualifierDef.javaType)) {
+                    for (var vc = JSON.parse(za.qualifierDef.jsonContent).productCodes, Xa = cljs.core.seq.call(null, vc), Ya = null, Za = 0, ka = 0;;) {
+                      if (ka < Za) {
+                        var wc = cljs.core._nth.call(null, Ya, ka);
+                        cljs.core._EQ_.call(null, O, wc) && null != R && cljs.core.println.call(null, " QUALIFIERS ", za, " BENEFIT ", R);
+                        ka += 1;
+                      } else {
+                        var Bb = cljs.core.seq.call(null, Xa);
+                        if (Bb) {
+                          var la = Bb;
+                          if (cljs.core.chunked_seq_QMARK_.call(null, la)) {
+                            var Cb = cljs.core.chunk_first.call(null, la), xc = cljs.core.chunk_rest.call(null, la), yc = Cb, zc = cljs.core.count.call(null, Cb), Xa = xc, Ya = yc, Za = zc
+                          } else {
+                            var Ac = cljs.core.first.call(null, la);
+                            cljs.core._EQ_.call(null, O, Ac) && null != R && cljs.core.println.call(null, " QUALIFIERS ", za, " BENEFIT ", R);
+                            Xa = cljs.core.next.call(null, la);
+                            Ya = null;
+                            Za = 0;
+                          }
+                          ka = 0;
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                  }
+                  ja += 1;
+                } else {
+                  var Db = cljs.core.seq.call(null, Ua);
+                  if (Db) {
+                    var ma = Db;
+                    if (cljs.core.chunked_seq_QMARK_.call(null, ma)) {
+                      var Eb = cljs.core.chunk_first.call(null, ma), Bc = cljs.core.chunk_rest.call(null, ma), Cc = Eb, Dc = cljs.core.count.call(null, Eb), Ua = Bc, Va = Cc, Wa = Dc
+                    } else {
+                      var Aa = cljs.core.first.call(null, ma);
+                      if (cljs.core._EQ_.call(null, "ProductQualifier", Aa.qualifierDef.javaType)) {
+                        for (var Ec = JSON.parse(Aa.qualifierDef.jsonContent).productCodes, $a = cljs.core.seq.call(null, Ec), ab = null, bb = 0, na = 0;;) {
+                          if (na < bb) {
+                            var Fc = cljs.core._nth.call(null, ab, na);
+                            cljs.core._EQ_.call(null, O, Fc) && null != R && cljs.core.println.call(null, " QUALIFIERS ", Aa, " BENEFIT ", R);
+                            na += 1;
+                          } else {
+                            var Fb = cljs.core.seq.call(null, $a);
+                            if (Fb) {
+                              var oa = Fb;
+                              if (cljs.core.chunked_seq_QMARK_.call(null, oa)) {
+                                var Gb = cljs.core.chunk_first.call(null, oa), Gc = cljs.core.chunk_rest.call(null, oa), Hc = Gb, Ic = cljs.core.count.call(null, Gb), $a = Gc, ab = Hc, bb = Ic
+                              } else {
+                                var Jc = cljs.core.first.call(null, oa);
+                                cljs.core._EQ_.call(null, O, Jc) && null != R && cljs.core.println.call(null, " QUALIFIERS ", Aa, " BENEFIT ", R);
+                                $a = cljs.core.next.call(null, oa);
+                                ab = null;
+                                bb = 0;
+                              }
+                              na = 0;
+                            } else {
+                              break;
+                            }
+                          }
+                        }
+                      }
+                      Ua = cljs.core.next.call(null, ma);
+                      Va = null;
+                      Wa = 0;
+                    }
+                    ja = 0;
+                  } else {
+                    break;
+                  }
+                }
+              }
+              ia += 1;
+            } else {
+              var Hb = cljs.core.seq.call(null, Ra);
+              if (Hb) {
+                var pa = Hb;
+                if (cljs.core.chunked_seq_QMARK_.call(null, pa)) {
+                  var Ib = cljs.core.chunk_first.call(null, pa), Kc = cljs.core.chunk_rest.call(null, pa), Lc = Ib, Mc = cljs.core.count.call(null, Ib), Ra = Kc, Sa = Lc, Ta = Mc
+                } else {
+                  for (var Jb = cljs.core.first.call(null, pa), S = Jb.benefit, cb = cljs.core.seq.call(null, Jb.qualifiers), db = null, eb = 0, qa = 0;;) {
+                    if (qa < eb) {
+                      var Ba = cljs.core._nth.call(null, db, qa);
+                      if (cljs.core._EQ_.call(null, "ProductQualifier", Ba.qualifierDef.javaType)) {
+                        for (var Nc = JSON.parse(Ba.qualifierDef.jsonContent).productCodes, fb = cljs.core.seq.call(null, Nc), gb = null, hb = 0, ra = 0;;) {
+                          if (ra < hb) {
+                            var Oc = cljs.core._nth.call(null, gb, ra);
+                            cljs.core._EQ_.call(null, O, Oc) && null != S && cljs.core.println.call(null, " QUALIFIERS ", Ba, " BENEFIT ", S);
+                            ra += 1;
+                          } else {
+                            var Kb = cljs.core.seq.call(null, fb);
+                            if (Kb) {
+                              var sa = Kb;
+                              if (cljs.core.chunked_seq_QMARK_.call(null, sa)) {
+                                var Lb = cljs.core.chunk_first.call(null, sa), Pc = cljs.core.chunk_rest.call(null, sa), Qc = Lb, Rc = cljs.core.count.call(null, Lb), fb = Pc, gb = Qc, hb = Rc
+                              } else {
+                                var Sc = cljs.core.first.call(null, sa);
+                                cljs.core._EQ_.call(null, O, Sc) && null != S && cljs.core.println.call(null, " QUALIFIERS ", Ba, " BENEFIT ", S);
+                                fb = cljs.core.next.call(null, sa);
+                                gb = null;
+                                hb = 0;
+                              }
+                              ra = 0;
+                            } else {
+                              break;
+                            }
+                          }
+                        }
+                      }
+                      qa += 1;
+                    } else {
+                      var Mb = cljs.core.seq.call(null, cb);
+                      if (Mb) {
+                        var ta = Mb;
+                        if (cljs.core.chunked_seq_QMARK_.call(null, ta)) {
+                          var Nb = cljs.core.chunk_first.call(null, ta), Tc = cljs.core.chunk_rest.call(null, ta), Uc = Nb, Vc = cljs.core.count.call(null, Nb), cb = Tc, db = Uc, eb = Vc
+                        } else {
+                          var Ca = cljs.core.first.call(null, ta);
+                          if (cljs.core._EQ_.call(null, "ProductQualifier", Ca.qualifierDef.javaType)) {
+                            for (var Wc = JSON.parse(Ca.qualifierDef.jsonContent).productCodes, ib = cljs.core.seq.call(null, Wc), jb = null, kb = 0, ua = 0;;) {
+                              if (ua < kb) {
+                                var Xc = cljs.core._nth.call(null, jb, ua);
+                                cljs.core._EQ_.call(null, O, Xc) && null != S && cljs.core.println.call(null, " QUALIFIERS ", Ca, " BENEFIT ", S);
+                                ua += 1;
+                              } else {
+                                var Ob = cljs.core.seq.call(null, ib);
+                                if (Ob) {
+                                  var va = Ob;
+                                  if (cljs.core.chunked_seq_QMARK_.call(null, va)) {
+                                    var Pb = cljs.core.chunk_first.call(null, va), Yc = cljs.core.chunk_rest.call(null, va), Zc = Pb, $c = cljs.core.count.call(null, Pb), ib = Yc, jb = Zc, kb = $c
+                                  } else {
+                                    var ad = cljs.core.first.call(null, va);
+                                    cljs.core._EQ_.call(null, O, ad) && null != S && cljs.core.println.call(null, " QUALIFIERS ", Ca, " BENEFIT ", S);
+                                    ib = cljs.core.next.call(null, va);
+                                    jb = null;
+                                    kb = 0;
+                                  }
+                                  ua = 0;
+                                } else {
+                                  break;
+                                }
+                              }
+                            }
+                          }
+                          cb = cljs.core.next.call(null, ta);
+                          db = null;
+                          eb = 0;
+                        }
+                        qa = 0;
+                      } else {
+                        break;
+                      }
+                    }
+                  }
+                  Ra = cljs.core.next.call(null, pa);
+                  Sa = null;
+                  Ta = 0;
+                }
+                ia = 0;
+              } else {
+                break;
+              }
+            }
+          }
+          b.send([cljs.core.str("lines: "), cljs.core.str(e)].join(""));
+          f = cljs.core.next.call(null, ga);
+          g = null;
+          h = 0;
+        }
+        k = 0;
       } else {
         return null;
       }
