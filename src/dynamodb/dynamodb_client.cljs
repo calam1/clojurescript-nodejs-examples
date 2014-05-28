@@ -85,15 +85,9 @@
                             (doseq [prodCode productCodes]
                               (if (= productCode prodCode)
                                 (if (not (nil? benefit))
-                                (println " QUALIFIERS " myQualifiers " BENEFIT " benefit))
-                                ;(println " PRODUCT CODES IS EQUAL " prodCode " " productCode)
-                                ;(println " PRODUCT CODES IS NOT EQUAL " prodCode " " productCode)
-                                ))))))
-                    ;(println " TEST " myQualifiers)
-                    )))
-              ;(println " COMPONENTS " components)
-              ))
-          (.send res (str "lines: " lines)))))))
+                                ;(println " QUALIFIERS " myQualifiers " BENEFIT " benefit)   ;)
+                                  (.send res "benefit " benefit)
+         ))))))))))))))) ) (.send res (str "no benefit ")))
 
 (.get app "/search/allDeals" dealsAll)
 (.post app "/evaluate" evaluate)
