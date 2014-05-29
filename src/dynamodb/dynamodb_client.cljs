@@ -28,12 +28,10 @@
                           skus (aget json "skus")
                           productCodes (aget json "productCodes")]
                       (doseq [sku skus]
-                        (swap! bogoDeals assoc sku deal)
-                        )
+                        (swap! bogoDeals assoc sku deal))
                       (doseq [productCode productCodes]
                         (swap! bogoDeals assoc productCode deal)
-                        )
-                    ))))
+                        )))))
               (recur (rest myQualifiers)))))
         (recur (rest myComponents))))))
 
@@ -54,7 +52,6 @@
         (handleComponents bogoDeals)))
 
 (defn evaluate [req res]
-  (println "In evaluate")
   (let [body (aget req "body")]
     (let [{:keys [retailTransactionId date localCurrency retailChannel subTotal lines]} (js->clj body :keywordize-keys true)]
       (doseq [line lines]
@@ -73,11 +70,8 @@
                             (doseq [prodCode productCodes]
                               (if (= productCode prodCode)
                                 (if (not (nil? benefit))
-                                  (if (= 2 quantity)
-                                     (let [returnJson
-                                      lines ;; return cart with adjusted price or something like that just a POC
-
-                                       ]
+                                  (if (= 2 quantity);;oversimplified unrealistic evaluation
+                                     (let [returnJson line];;just return the line getting the deal
                                   (.send res (clj->js returnJson)))))))))))))))))))))
 
 (defn dealsAll [req res]
@@ -87,8 +81,7 @@
     (set! (.-region config) "us-east-1")
     (let [db (aws.DynamoDB.)]
       (let [request (.query db (clj->js deals-all))]
-        (.on request "complete" (fn [response] (handleDeals (.-error response) (.-data response))
-                                  (evaluate req res)))
+        (.on request "complete" (fn [response] (handleDeals (.-error response) (.-data response)) (evaluate req res)))
         (.send request))))))
 
 (.post app "/evaluate" dealsAll)

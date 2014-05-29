@@ -14075,7 +14075,6 @@ dynamodb.dynamodb_client.handleDeals = function(a, b) {
   return dynamodb.dynamodb_client.handleComponents.call(null, c);
 };
 dynamodb.dynamodb_client.evaluate = function(a, b) {
-  cljs.core.println.call(null, "In evaluate");
   var c = cljs.core.js__GT_clj.call(null, a.body, new cljs.core.Keyword(null, "keywordize-keys", "keywordize-keys", 4191781672), !0), d = cljs.core.seq_QMARK_.call(null, c) ? cljs.core.apply.call(null, cljs.core.hash_map, c) : c, e = cljs.core.get.call(null, d, new cljs.core.Keyword(null, "lines", "lines", 1116881521));
   cljs.core.get.call(null, d, new cljs.core.Keyword(null, "subTotal", "subTotal", 3218999382));
   cljs.core.get.call(null, d, new cljs.core.Keyword(null, "retailChannel", "retailChannel", 3047652850));
@@ -14100,7 +14099,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                 for (var G = JSON.parse(D.qualifierDef.jsonContent).productCodes, E = cljs.core.seq.call(null, G), H = null, J = 0, I = 0;;) {
                   if (I < J) {
                     var L = cljs.core._nth.call(null, H, I);
-                    cljs.core._EQ_.call(null, s, L) && null != x && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, e));
+                    cljs.core._EQ_.call(null, s, L) && null != x && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, l));
                     I += 1;
                   } else {
                     var M = cljs.core.seq.call(null, E);
@@ -14110,7 +14109,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                         var N = cljs.core.chunk_first.call(null, K), Q = cljs.core.chunk_rest.call(null, K), R = N, T = cljs.core.count.call(null, N), E = Q, H = R, J = T
                       } else {
                         var ta = cljs.core.first.call(null, K);
-                        cljs.core._EQ_.call(null, s, ta) && null != x && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, e));
+                        cljs.core._EQ_.call(null, s, ta) && null != x && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, l));
                         E = cljs.core.next.call(null, K);
                         H = null;
                         J = 0;
@@ -14135,7 +14134,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                     for (var Vb = JSON.parse(hb.qualifierDef.jsonContent).productCodes, ya = cljs.core.seq.call(null, Vb), za = null, Aa = 0, V = 0;;) {
                       if (V < Aa) {
                         var Wb = cljs.core._nth.call(null, za, V);
-                        cljs.core._EQ_.call(null, s, Wb) && null != x && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, e));
+                        cljs.core._EQ_.call(null, s, Wb) && null != x && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, l));
                         V += 1;
                       } else {
                         var ib = cljs.core.seq.call(null, ya);
@@ -14145,7 +14144,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                             var jb = cljs.core.chunk_first.call(null, W), Xb = cljs.core.chunk_rest.call(null, W), Yb = jb, Zb = cljs.core.count.call(null, jb), ya = Xb, za = Yb, Aa = Zb
                           } else {
                             var $b = cljs.core.first.call(null, W);
-                            cljs.core._EQ_.call(null, s, $b) && null != x && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, e));
+                            cljs.core._EQ_.call(null, s, $b) && null != x && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, l));
                             ya = cljs.core.next.call(null, W);
                             za = null;
                             Aa = 0;
@@ -14182,7 +14181,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                     for (var dc = JSON.parse(nb.qualifierDef.jsonContent).productCodes, Ea = cljs.core.seq.call(null, dc), Fa = null, Ga = 0, Z = 0;;) {
                       if (Z < Ga) {
                         var ec = cljs.core._nth.call(null, Fa, Z);
-                        cljs.core._EQ_.call(null, s, ec) && null != va && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, e));
+                        cljs.core._EQ_.call(null, s, ec) && null != va && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, l));
                         Z += 1;
                       } else {
                         var ob = cljs.core.seq.call(null, Ea);
@@ -14192,7 +14191,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                             var pb = cljs.core.chunk_first.call(null, $), fc = cljs.core.chunk_rest.call(null, $), gc = pb, hc = cljs.core.count.call(null, pb), Ea = fc, Fa = gc, Ga = hc
                           } else {
                             var ic = cljs.core.first.call(null, $);
-                            cljs.core._EQ_.call(null, s, ic) && null != va && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, e));
+                            cljs.core._EQ_.call(null, s, ic) && null != va && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, l));
                             Ea = cljs.core.next.call(null, $);
                             Fa = null;
                             Ga = 0;
@@ -14217,7 +14216,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                         for (var mc = JSON.parse(sb.qualifierDef.jsonContent).productCodes, Ha = cljs.core.seq.call(null, mc), Ia = null, Ja = 0, ba = 0;;) {
                           if (ba < Ja) {
                             var nc = cljs.core._nth.call(null, Ia, ba);
-                            cljs.core._EQ_.call(null, s, nc) && null != va && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, e));
+                            cljs.core._EQ_.call(null, s, nc) && null != va && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, l));
                             ba += 1;
                           } else {
                             var tb = cljs.core.seq.call(null, Ha);
@@ -14227,7 +14226,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                                 var ub = cljs.core.chunk_first.call(null, ca), oc = cljs.core.chunk_rest.call(null, ca), pc = ub, qc = cljs.core.count.call(null, ub), Ha = oc, Ia = pc, Ja = qc
                               } else {
                                 var rc = cljs.core.first.call(null, ca);
-                                cljs.core._EQ_.call(null, s, rc) && null != va && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, e));
+                                cljs.core._EQ_.call(null, s, rc) && null != va && cljs.core._EQ_.call(null, 2, q) && b.send(cljs.core.clj__GT_js.call(null, l));
                                 Ha = cljs.core.next.call(null, ca);
                                 Ia = null;
                                 Ja = 0;
@@ -14283,7 +14282,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                     for (var xc = JSON.parse(zb.qualifierDef.jsonContent).productCodes, Sa = cljs.core.seq.call(null, xc), Ta = null, Ua = 0, ha = 0;;) {
                       if (ha < Ua) {
                         var yc = cljs.core._nth.call(null, Ta, ha);
-                        cljs.core._EQ_.call(null, O, yc) && null != wa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, e));
+                        cljs.core._EQ_.call(null, O, yc) && null != wa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, l));
                         ha += 1;
                       } else {
                         var Ab = cljs.core.seq.call(null, Sa);
@@ -14293,7 +14292,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                             var Bb = cljs.core.chunk_first.call(null, ia), zc = cljs.core.chunk_rest.call(null, ia), Ac = Bb, Bc = cljs.core.count.call(null, Bb), Sa = zc, Ta = Ac, Ua = Bc
                           } else {
                             var Cc = cljs.core.first.call(null, ia);
-                            cljs.core._EQ_.call(null, O, Cc) && null != wa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, e));
+                            cljs.core._EQ_.call(null, O, Cc) && null != wa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, l));
                             Sa = cljs.core.next.call(null, ia);
                             Ta = null;
                             Ua = 0;
@@ -14318,7 +14317,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                         for (var Gc = JSON.parse(Eb.qualifierDef.jsonContent).productCodes, Va = cljs.core.seq.call(null, Gc), Wa = null, Xa = 0, ka = 0;;) {
                           if (ka < Xa) {
                             var Hc = cljs.core._nth.call(null, Wa, ka);
-                            cljs.core._EQ_.call(null, O, Hc) && null != wa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, e));
+                            cljs.core._EQ_.call(null, O, Hc) && null != wa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, l));
                             ka += 1;
                           } else {
                             var Fb = cljs.core.seq.call(null, Va);
@@ -14328,7 +14327,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                                 var Gb = cljs.core.chunk_first.call(null, la), Ic = cljs.core.chunk_rest.call(null, la), Jc = Gb, Kc = cljs.core.count.call(null, Gb), Va = Ic, Wa = Jc, Xa = Kc
                               } else {
                                 var Lc = cljs.core.first.call(null, la);
-                                cljs.core._EQ_.call(null, O, Lc) && null != wa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, e));
+                                cljs.core._EQ_.call(null, O, Lc) && null != wa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, l));
                                 Va = cljs.core.next.call(null, la);
                                 Wa = null;
                                 Xa = 0;
@@ -14365,7 +14364,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                         for (var Pc = JSON.parse(Kb.qualifierDef.jsonContent).productCodes, ab = cljs.core.seq.call(null, Pc), bb = null, cb = 0, oa = 0;;) {
                           if (oa < cb) {
                             var Qc = cljs.core._nth.call(null, bb, oa);
-                            cljs.core._EQ_.call(null, O, Qc) && null != xa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, e));
+                            cljs.core._EQ_.call(null, O, Qc) && null != xa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, l));
                             oa += 1;
                           } else {
                             var Lb = cljs.core.seq.call(null, ab);
@@ -14375,7 +14374,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                                 var Mb = cljs.core.chunk_first.call(null, pa), Rc = cljs.core.chunk_rest.call(null, pa), Sc = Mb, Tc = cljs.core.count.call(null, Mb), ab = Rc, bb = Sc, cb = Tc
                               } else {
                                 var Uc = cljs.core.first.call(null, pa);
-                                cljs.core._EQ_.call(null, O, Uc) && null != xa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, e));
+                                cljs.core._EQ_.call(null, O, Uc) && null != xa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, l));
                                 ab = cljs.core.next.call(null, pa);
                                 bb = null;
                                 cb = 0;
@@ -14400,7 +14399,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                             for (var Yc = JSON.parse(Pb.qualifierDef.jsonContent).productCodes, db = cljs.core.seq.call(null, Yc), eb = null, fb = 0, ra = 0;;) {
                               if (ra < fb) {
                                 var Zc = cljs.core._nth.call(null, eb, ra);
-                                cljs.core._EQ_.call(null, O, Zc) && null != xa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, e));
+                                cljs.core._EQ_.call(null, O, Zc) && null != xa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, l));
                                 ra += 1;
                               } else {
                                 var Qb = cljs.core.seq.call(null, db);
@@ -14410,7 +14409,7 @@ dynamodb.dynamodb_client.evaluate = function(a, b) {
                                     var Rb = cljs.core.chunk_first.call(null, sa), $c = cljs.core.chunk_rest.call(null, sa), ad = Rb, bd = cljs.core.count.call(null, Rb), db = $c, eb = ad, fb = bd
                                   } else {
                                     var cd = cljs.core.first.call(null, sa);
-                                    cljs.core._EQ_.call(null, O, cd) && null != xa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, e));
+                                    cljs.core._EQ_.call(null, O, cd) && null != xa && cljs.core._EQ_.call(null, 2, P) && b.send(cljs.core.clj__GT_js.call(null, l));
                                     db = cljs.core.next.call(null, sa);
                                     eb = null;
                                     fb = 0;
