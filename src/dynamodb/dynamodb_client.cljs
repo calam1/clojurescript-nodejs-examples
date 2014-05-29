@@ -10,10 +10,7 @@
 (def deals-all {:TableName  "commerce.business.promote.DEAL"
                            :KeyConditions {
                                :id {:ComparisonOperator "EQ",
-                               :AttributeValueList [{:S "78CE7EB3D8AD4468940EE679D7D37307"}]
-                               }
-                             }
-                        })
+                               :AttributeValueList [{:S "78CE7EB3D8AD4468940EE679D7D37307"}]}}})
 
 (def bogoDeals (atom {}))
 
@@ -46,10 +43,7 @@
             (let [deal (first myDeals)]
               (let [components (js/JSON.parse (get (get deal "components") "S"))]
                 (handleQualifiers components deal))
-          (recur (rest myDeals)))))
-          ;(println "TEST GET A DEAL FOR PRODUCT CODE 3m-168 " (@bogoDeals "3m-168"))
-          ;(println "TEST GET A DEAL FOR PRODUCT CODE 3l-168 " (@bogoDeals "3l-168"))
-  )
+          (recur (rest myDeals))))))
 
 (defn handleDeals [err data]
   (let [items (-> data .-Items)
@@ -59,14 +53,8 @@
         (println "count " limBogoDeals)
         (handleComponents bogoDeals)))
 
-(defn dealsAll [req res]
-  (let [config (.-config aws)]
-    (set! (.-region config) "us-east-1")
-    (let [db (aws.DynamoDB.)]
-          (.query db (clj->js deals-all) handleDeals)))
-  (.send res "populating with deals"))
-
 (defn evaluate [req res]
+  (println "In evaluate")
   (let [body (aget req "body")]
     (let [{:keys [retailTransactionId date localCurrency retailChannel subTotal lines]} (js->clj body :keywordize-keys true)]
       (doseq [line lines]
@@ -85,12 +73,25 @@
                             (doseq [prodCode productCodes]
                               (if (= productCode prodCode)
                                 (if (not (nil? benefit))
-                                ;(println " QUALIFIERS " myQualifiers " BENEFIT " benefit)   ;)
-                                  (.send res "benefit " benefit)
-         ))))))))))))))) ) (.send res (str "no benefit ")))
+                                  (if (= 2 quantity)
+                                     (let [returnJson
+                                      lines ;; return cart with adjusted price or something like that just a POC
 
-(.get app "/search/allDeals" dealsAll)
-(.post app "/evaluate" evaluate)
+                                       ]
+                                  (.send res (clj->js returnJson)))))))))))))))))))))
+
+(defn dealsAll [req res]
+  (if (not-empty @bogoDeals)
+    (evaluate req res)
+  (let [config (.-config aws)]
+    (set! (.-region config) "us-east-1")
+    (let [db (aws.DynamoDB.)]
+      (let [request (.query db (clj->js deals-all))]
+        (.on request "complete" (fn [response] (handleDeals (.-error response) (.-data response))
+                                  (evaluate req res)))
+        (.send request))))))
+
+(.post app "/evaluate" dealsAll)
 
 (.listen app 8080)
 
