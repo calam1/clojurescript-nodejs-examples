@@ -12,6 +12,7 @@
                                :id {:ComparisonOperator "EQ",
                                :AttributeValueList [{:S "78CE7EB3D8AD4468940EE679D7D37307"}]}}})
 
+(def port (or process.env.PORT 3000))
 (def bogoDeals (atom {}))
 
 (defn handleQualifiers [components deal]
@@ -86,10 +87,10 @@
 
 (.post app "/evaluate" dealsAll)
 
-(.listen app 8080)
+(.listen app port)
 
 (defn -main[& args]
-  (println "Server started on port 8080"))
+  (println "Server started on port: " port))
 
 (enable-console-print!)
 (set! *main-cli-fn* -main)

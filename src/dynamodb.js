@@ -14008,6 +14008,10 @@ dynamodb.dynamodb_client.app.use(dynamodb.dynamodb_client.express_middlewares.bo
 dynamodb.dynamodb_client.aws = cljs.nodejs.require.call(null, "aws-sdk");
 dynamodb.dynamodb_client.deals_all = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "TableName", "TableName", 1029154507), "commerce.business.promote.DEAL", new cljs.core.Keyword(null, "KeyConditions", "KeyConditions", 3310791113), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "id", "id", 1013907597), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ComparisonOperator", "ComparisonOperator", 1620971359), "EQ", new cljs.core.Keyword(null, 
 "AttributeValueList", "AttributeValueList", 2230708741), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "S", "S", 1013904325), "78CE7EB3D8AD4468940EE679D7D37307"], null)], null)], null)], null)], null);
+dynamodb.dynamodb_client.port = function() {
+  var a = process.env.PORT;
+  return cljs.core.truth_(a) ? a : 3E3;
+}();
 dynamodb.dynamodb_client.bogoDeals = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.EMPTY);
 dynamodb.dynamodb_client.handleQualifiers = function(a, b) {
   for (var c = a;;) {
@@ -14465,10 +14469,10 @@ dynamodb.dynamodb_client.dealsAll = function(a, b) {
   return c.send();
 };
 dynamodb.dynamodb_client.app.post("/evaluate", dynamodb.dynamodb_client.dealsAll);
-dynamodb.dynamodb_client.app.listen(8080);
+dynamodb.dynamodb_client.app.listen(dynamodb.dynamodb_client.port);
 dynamodb.dynamodb_client._main = function() {
   var a = function(a) {
-    return cljs.core.println.call(null, "Server started on port 8080");
+    return cljs.core.println.call(null, "Server started on port: ", dynamodb.dynamodb_client.port);
   }, b = function(b) {
     var d = null;
     0 < arguments.length && (d = cljs.core.array_seq(Array.prototype.slice.call(arguments, 0), 0));
